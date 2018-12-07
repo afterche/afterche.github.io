@@ -851,11 +851,12 @@ $(document).ready(function() {
 				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
 			}
 
-			$("#videoSource").unbind("change").change(function(){
+			/* $("#videoSource").unbind("change").change(function(){
 				console.log ("ea23")
 				scannerStart()
-			});
-			
+			}); */
+			videoSource.onchange = scannerStart;
+			console.log ("ea23");
 		
 		
 	});
