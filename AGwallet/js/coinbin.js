@@ -816,7 +816,7 @@ $(document).ready(function() {
 	}); */
 
 	
-	//+++ afterche
+	//+++ afterche videoinput
 	$(".qrcodeScanner").click(function(){
 		console.log ("ea");
 		
@@ -835,14 +835,14 @@ $(document).ready(function() {
 					var deviceInfo = deviceInfos[i];
 					console.log (deviceInfo);
 					var option = document.createElement('option');
-					option.value = deviceInfo.id;
+					option.value = deviceInfo.deviceId;
+					console.log (deviceInfo.deviceId);
 					console.log (deviceInfo.kind);
 					console.log (deviceInfo.label);
-					if (deviceInfo.kind === 'video') {
+					if (deviceInfo.kind === 'audioinput') {
 						alert ("finde");
-						option.text = deviceInfo.label || 'camera ' +
-						(videoSource.length + 1);
-						videoSource.appendChild(option);
+						option.text = deviceInfo.label || 'camera ' + ($("select#videoSource options").length + 1);
+						$(option).appendTo("select#videoSource");
 					}
 				}
 				console.log ("ea26-1")
@@ -870,6 +870,7 @@ $(document).ready(function() {
   			}
 
 			var videoSource = $("select#videoSource").val();
+			console.log ("videoSource="+videoSource)
 			var constraints = {
 				video: {
 					optional: [{sourceId: videoSource}]
