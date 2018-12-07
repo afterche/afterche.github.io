@@ -919,8 +919,7 @@ $(document).ready(function() {
 			var option = document.createElement('option');
 			option.value = deviceInfo.deviceId;
 			if (deviceInfo.kind === 'videoinput') {
-			  option.text = deviceInfo.kind || 'camera ' +
-				(videoSelect.length + 1);
+			  option.text = deviceInfo.kind || 'camera ' + i;
 			  videoSelect.appendChild(option);
 			} 
 		  }
@@ -930,10 +929,12 @@ $(document).ready(function() {
 	  if (window.stream) {
 		window.stream.getTracks().forEach(function(track) {
 		  track.stop();
+		  alert ('new video1');
 		});
 	  }
 		var videoSelect = document.querySelector('select#videoSource');
 		console.log('videoSelect.value= ', videoSelect.value);
+		alert ('videoSelect.value= ', videoSelect.value);
 		 var constraints = {
 			video: {
 			  deviceId: {exact: videoSelect.value}
