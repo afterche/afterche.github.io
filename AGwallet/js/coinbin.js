@@ -918,7 +918,7 @@ $(document).ready(function() {
 			var deviceInfo = deviceInfos[i];
 			var option = document.createElement('option');
 			option.value = deviceInfo.deviceId;
-			alert ('option.value',option.value);
+			alert ('option.value=',option.value);
 			if (deviceInfo.kind === 'videoinput') {
 			  alert ("find777");
 						option.text = deviceInfo.kind + ' ' + i;
