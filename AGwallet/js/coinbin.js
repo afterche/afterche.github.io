@@ -815,10 +815,13 @@ $(document).ready(function() {
 		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 	}); */
 		
-	$("#videoSource").unbind("change").change(function(){
-				console.log ("ea23")
+	$("#videoSource").change(function(){
+				console.log ("videoSource change")
 				scannerStart()
-			});
+	});
+			
+			
+			
 	//+++ afterche videoinput
 	$(".qrcodeScanner").click(function(){
 		
