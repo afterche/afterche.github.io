@@ -913,20 +913,38 @@ $(document).ready(function() {
 
 		videoSelect.onchange = getStream;
 
-		function gotDevices(deviceInfos) {
-		  for (var i = 0; i !== deviceInfos.length; ++i) {
-			var deviceInfo = deviceInfos[i];
-			var option = document.createElement('option');
-			option.value = deviceInfo.deviceId;
-			alert ('option.value=',option.value);
-			if (deviceInfo.kind === 'videoinput') {
-			  alert ("find777");
+		function gotDevices(deviceInfos){
+				console.log ("ea2");
+				var f = 0;
+				$("select#videoSource").html("");
+				for (var i = 0; i !== deviceInfos.length; ++i) {
+					
+					var deviceInfo = deviceInfos[i];
+					console.log (deviceInfo);
+					var option = document.createElement('option');
+					option.value = deviceInfo.deviceId;
+					alert ('option.value =',option.value);
+					console.log ('option.value '+option.value);
+					console.log ('deviceInfo.kind='+deviceInfo.kind);
+					//console.log ('deviceInfo.label='+deviceInfo.label);
+					if (deviceInfo.kind === 'audioinput') {
+						alert ("find777");
 						option.text = deviceInfo.kind + ' ' + i;
 						console.log ('option.text='+option.text);
 						$(option).appendTo("select#videoSource");
-			} 
-		  }
+					}
+				}
+				console.log ("ea26-1")
+				scannerStart();
+				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
 		}
+
+			$("#videoSource").change(function(){
+				console.log ("videoSource change")
+				scannerStart();
+				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
+			});
+			
 
 	function getStream() {
 	  if (window.stream) {
