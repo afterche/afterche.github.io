@@ -814,7 +814,8 @@ $(document).ready(function() {
 		scannerStart();
 		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 	}); */
-
+		var videoSelect = document.querySelector('select#videoSource');
+		videoSelect.onchange = scannerStart();
 	
 	//+++ afterche videoinput
 	$(".qrcodeScanner").click(function(){
@@ -840,7 +841,7 @@ $(document).ready(function() {
 					console.log ('deviceInfo.kind='+deviceInfo.kind);
 					console.log ('deviceInfo.label='+deviceInfo.label);
 					if (deviceInfo.kind === 'videoinput') {
-						alert ("finde");
+						alert ("find444e");
 						option.text = deviceInfo.kind + ' ' + i;
 						console.log ('option.text='+option.text);
 						$(option).appendTo("select#videoSource");
@@ -855,7 +856,7 @@ $(document).ready(function() {
 				console.log ("ea23")
 				scannerStart()
 			}); */
-			videoSource.onchange = scannerStart;
+			videoSource.onchange = scannerStart();
 			console.log ("ea23");
 		
 		
