@@ -1,0 +1,6 @@
+User-agent: *
+
+Disallow:
+
+Sitemap: http://afterche.com/sitemap.xml
+Host: http://afterche.com
