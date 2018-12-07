@@ -836,9 +836,9 @@ $(document).ready(function() {
 					console.log (sourceInfo);
 					var option = document.createElement('option');
 					option.value = deviceInfos.id;
-					console.log (sourceInfo.kind);
-					console.log (sourceInfo.label);
-					if (sourceInfo.kind === 'videoinput') {
+					console.log (deviceInfo.kind);
+					console.log (deviceInfo.label);
+					if (deviceInfo.kind === 'videoinput') {
 						option.text = deviceInfo.label || 'camera ' +
 						(videoSelect.length + 1);
 						videoSelect.appendChild(option);
