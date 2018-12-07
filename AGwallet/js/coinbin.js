@@ -853,9 +853,9 @@ $(document).ready(function() {
 			});
 			
 		
-		console.log ("ea26")
-		scannerStart();
-		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
+		//console.log ("ea26")
+		//scannerStart();
+		//$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 	});
 	//--- afterche
 	
