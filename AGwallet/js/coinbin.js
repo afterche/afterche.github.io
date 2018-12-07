@@ -838,10 +838,11 @@ $(document).ready(function() {
 					option.value = deviceInfo.id;
 					console.log (deviceInfo.kind);
 					console.log (deviceInfo.label);
-					if (deviceInfo.kind === 'audioinput') {
+					if (deviceInfo.kind === 'video') {
+						alert ("finde");
 						option.text = deviceInfo.label || 'camera ' +
-						(videoSelect.length + 1);
-						videoSelect.appendChild(option);
+						(videoSource.length + 1);
+						videoSource.appendChild(option);
 					}
 				}
 				console.log ("ea26")
