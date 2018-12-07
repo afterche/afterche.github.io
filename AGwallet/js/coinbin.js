@@ -836,12 +836,13 @@ $(document).ready(function() {
 					console.log (deviceInfo);
 					var option = document.createElement('option');
 					option.value = deviceInfo.deviceId;
-					console.log (deviceInfo.deviceId);
-					console.log (deviceInfo.kind);
-					console.log (deviceInfo.label);
-					if (deviceInfo.kind === 'videoinput') {
+					console.log ('deviceInfo.deviceId='+deviceInfo.deviceId);
+					console.log ('deviceInfo.kind='+deviceInfo.kind);
+					console.log ('deviceInfo.label='+deviceInfo.label);
+					if (deviceInfo.kind === 'audioinput') {
 						alert ("finde");
-						option.text = deviceInfo.label || 'camera ' + ($("select#videoSource options").length + 1);
+						option.text = deviceInfo.kind + ' ' + i;
+						console.log ('option.text='+option.text);
 						$(option).appendTo("select#videoSource");
 					}
 				}
@@ -870,7 +871,8 @@ $(document).ready(function() {
   			}
 
 			var videoSource = $("select#videoSource").val();
-			console.log ("videoSource="+videoSource)
+			console.log ("videoSource="+videoSource);
+			alert ("videoSource="+videoSource);
 			var constraints = {
 				video: {
 					optional: [{sourceId: videoSource}]
