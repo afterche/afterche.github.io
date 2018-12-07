@@ -844,7 +844,7 @@ $(document).ready(function() {
 					console.log ('deviceInfo.kind='+deviceInfo.kind);
 					//console.log ('deviceInfo.label='+deviceInfo.label);
 					if (deviceInfo.kind === 'audioinput') {
-						alert ("find555");
+						alert ("find777");
 						option.text = deviceInfo.kind + ' ' + i;
 						console.log ('option.text='+option.text);
 						$(option).appendTo("select#videoSource");
