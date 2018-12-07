@@ -788,7 +788,7 @@ $(document).ready(function() {
 
 	/* code for the qr code scanner */
 
-	$(".qrcodeScanner").click(function(){
+	/* $(".qrcodeScanner").click(function(){
 		if ((typeof MediaStreamTrack === 'function') && typeof MediaStreamTrack.getSources === 'function'){
 			MediaStreamTrack.getSources(function(sourceInfos){
 				var f = 0;
@@ -813,8 +813,53 @@ $(document).ready(function() {
 		}
 		scannerStart();
 		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
-	});
+	}); */
 
+	
+	//+++ afterche
+	$(".qrcodeScanner").click(function(){
+		console.log ("ea");
+		
+		function handleError(error) {
+			console.log('navigator.getUserMedia error: ', error);
+		}
+		
+		navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+		
+			function gotDevices(deviceInfos){
+				console.log ("ea2");
+				var f = 0;
+				$("select#videoSource").html("");
+				for (var i = 0; i !== deviceInfos.length; ++i) {
+					
+					var deviceInfo = deviceInfos[i];
+					console.log (sourceInfo);
+					var option = document.createElement('option');
+					option.value = deviceInfos.id;
+					console.log (sourceInfo.kind);
+					console.log (sourceInfo.label);
+					if (sourceInfo.kind === 'videoinput') {
+						option.text = deviceInfo.label || 'camera ' +
+						(videoSelect.length + 1);
+						videoSelect.appendChild(option);
+					}
+				}
+				
+			}
+
+			$("#videoSource").unbind("change").change(function(){
+				console.log ("ea23")
+				scannerStart()
+			});
+			
+		
+		console.log ("ea26")
+		scannerStart();
+		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
+	});
+	//--- afterche
+	
+	
 	function scannerStart(){
 		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || false;
 		if(navigator.getUserMedia){
