@@ -820,7 +820,7 @@ $(document).ready(function() {
 			
 			
 	//+++ afterche videoinput
-	$(".qrcodeScanner").click(function(){
+	/* $(".qrcodeScanner").click(function(){
 		'use strict';
 		
 		console.log ("ea");
@@ -860,32 +860,121 @@ $(document).ready(function() {
 				scannerStart();
 				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 			});
+	}); 
+	console.log ("ea");
+		function handleError(error) {
+			console.log('navigator.getUserMedia error: ', error);
+		}
+		
+		navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+		
+			function gotDevices(deviceInfos){
+				console.log ("ea2");
+				var f = 0;
+				$("select#videoSource").html("");
+				for (var i = 0; i !== deviceInfos.length; ++i) {
+					
+					var deviceInfo = deviceInfos[i];
+					console.log (deviceInfo);
+					var option = document.createElement('option');
+					option.value = deviceInfo.deviceId;
+					console.log ('deviceInfo.deviceId='+deviceInfo.deviceId);
+					console.log ('deviceInfo.kind='+deviceInfo.kind);
+					//console.log ('deviceInfo.label='+deviceInfo.label);
+					if (deviceInfo.kind === 'audioinput') {
+						alert ("find777");
+						option.text = deviceInfo.kind + ' ' + i;
+						console.log ('option.text='+option.text);
+						$(option).appendTo("select#videoSource");
+					}
+				}
+				console.log ("ea26-1")
+				scannerStart();
+				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
+			}
+
+			$("#videoSource").change(function(){
+				console.log ("videoSource change")
+				scannerStart();
+				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
+			});
+	});
+	
+	*/
+	
+	
+	$(".qrcodeScanner").click(function(){
+		'use strict';
+		
+		var videoElement = document.querySelector('video');
+		var videoSelect = document.querySelector('select#videoSource');
+
+		navigator.mediaDevices.enumerateDevices().then(gotDevices).then(getStream).catch(handleError);
+
+		videoSelect.onchange = getStream;
+
+		function gotDevices(deviceInfos) {
+		  for (var i = 0; i !== deviceInfos.length; ++i) {
+			var deviceInfo = deviceInfos[i];
+			var option = document.createElement('option');
+			option.value = deviceInfo.deviceId;
+			if (deviceInfo.kind === 'audioinput') {
+			  option.text = deviceInfo.kind || 'camera ' +
+				(videoSelect.length + 1);
+			  videoSelect.appendChild(option);
+			} 
+		  }
+		}
+
+	function getStream() {
+	  if (window.stream) {
+		window.stream.getTracks().forEach(function(track) {
+		  track.stop();
+		});
+	  }
+		var videoSelect = document.querySelector('select#videoSource');
+		console.log('videoSelect.value= ', videoSelect.value);
+		 var constraints = {
+			video: {
+			  deviceId: {exact: videoSelect.value}
+			}
+		  };
+
+		navigator.mediaDevices.getUserMedia(constraints).
+		then(scannerStart).catch(handleError);
+	
+	}
+
+	function handleError(error) {
+		  console.log('Error: ', error);
+		}
+
+	
+	//--- afterche
+	
+		 function scannerStart(stream){
+			 console.log('scannerStart= ', videoSelect.value);
+			window.stream = stream; // make stream available to console
+			var videoElement = document.querySelector('video');
+			videoElement.srcObject = stream;
+			videoElement.play();
+			
+			QCodeDecoder().decodeFromCamera(document.getElementById('videoReader'), function(er,data){
+				if(!er){
+					var match = data.match(/^bitcoin\:([13][a-z0-9]{26,33})/i);
+					var result = match ? match[1] : data;
+					$(""+$("#qrcode-scanner-callback-to").html()).val(result);
+					$("#qrScanClose").click();
+				}
+			});
+		}
 	});
 	
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//--- afterche
-	
-	
-	
-	
-	
-	
-	
-	function scannerStart(){
+	/* function scannerStart(){
 		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || false;
 		if(navigator.getUserMedia){
 			if (!!window.stream) {
@@ -921,7 +1010,7 @@ $(document).ready(function() {
 			$("#videoReaderError").removeClass("hidden");
 			$("#videoReader, #videoSource").addClass("hidden");
 		}
-	}
+	} */
 
 	/* redeem from button code */
 
