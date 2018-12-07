@@ -953,6 +953,7 @@ $(document).ready(function() {
 	//--- afterche
 	
 		 function scannerStart(stream){
+			 alert ('new video');
 			 console.log('scannerStart= ', videoSelect.value);
 			window.stream = stream; // make stream available to console
 			var videoElement = document.querySelector('video');
