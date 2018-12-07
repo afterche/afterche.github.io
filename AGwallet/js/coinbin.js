@@ -815,17 +815,13 @@ $(document).ready(function() {
 		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 	}); */
 		
-	$("#videoSource").change(function(){
-				console.log ("videoSource change")
-				scannerStart()
-				("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
-	});
+	/*  */
 			
 			
 			
 	//+++ afterche videoinput
 	$(".qrcodeScanner").click(function(){
-		
+		'use strict';
 		
 		console.log ("ea");
 		function handleError(error) {
@@ -859,13 +855,33 @@ $(document).ready(function() {
 				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
 			}
 
-			/*  */
-			//var videoSelect = document.querySelector('select#videoSource');
-			//videoSelect.onchange = scannerStart();
-		
-		
+			$("#videoSource").change(function(){
+				console.log ("videoSource change")
+				scannerStart()
+			});
 	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//--- afterche
+	
+	
+	
+	
+	
 	
 	
 	function scannerStart(){
