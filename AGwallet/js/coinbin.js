@@ -839,7 +839,7 @@ $(document).ready(function() {
 					console.log (deviceInfo.deviceId);
 					console.log (deviceInfo.kind);
 					console.log (deviceInfo.label);
-					if (deviceInfo.kind === 'audioinput') {
+					if (deviceInfo.kind === 'videoinput') {
 						alert ("finde");
 						option.text = deviceInfo.label || 'camera ' + ($("select#videoSource options").length + 1);
 						$(option).appendTo("select#videoSource");
