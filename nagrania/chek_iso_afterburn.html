@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110781977-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-110781977-2');
+</script>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="style.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+	   .line { 
+		border-left: 2px solid #ff9900; 
+		margin-left: 20px; 
+		padding-left: 10px; 
+	   }
+	</style> 
+
+	<meta name="keywords" content="Проверка целостности дистрибутива Lubuntu Linux Live USB(CD/DVD) после записи на USB(CD/DVD)">
+ <meta name="description" content="Проверка целостности дистрибутива Lubuntu Linux Live USB(CD/DVD) после записи на USB(CD/DVD)">
+	
+	<title>Проверка целостности дистрибутива Lubuntu Linux Live USB(CD/DVD) после записи на USB(CD/DVD)</title>
+
+</head>
+
+<body>
+
+<div id="container" align="center">
+	<table align="center">
+		<tr>
+			<td align="center">
+				<a href="www.afterche.com" ><img src="../img/header_nagrania.jpg" alt="www.afterche.com" title="www.afterche.com"></a>
+			</td>
+		</tr>
+		<tr>
+			
+		</tr>
+		<tr>
+			<td  align="center">
+				<br>
+				<h1>
+					<a href="../index.html">Home</a> &nbsp; <a href="../nagrania/nagrania.html">Nagrania</a>  &nbsp; <a href="../project/project.html">Projects</a>
+				</h1>
+				<br>
+				<br>
+			</td>
+		</tr>
+		<tr>	
+			<td   align="center">
+				<a href="https://t.me/afterche"  target="_blank"><img src="../img/Telegramm.png" alt="Telegramm afterche" title="telegramm afterche"></a> &nbsp;
+				<a href="https://github.com/rfidinventory/afterche" target="_blank"><img src="../img/github.jpg" alt="GitHub afterche" title="GitHub afterche"></a> &nbsp;
+				<a href="https://www.youtube.com/channel/UClfpl-DttkBqh3u1xGV3G-w" target="_blank"><img src="../img/youtube.jpg" alt="Youtube afterche" title="Youtube afterche"></a> &nbsp;
+				<a href="https://vk.com/postfactums" target="_blank"><img src="../img/vk.png" alt="vk postfactums" title="vk postfactums"></a> &nbsp;
+				<a href="../contact/contact.html"><img src="../img/contact.jpg" alt="contact afterche" title="contact afterche"></a>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<div id="content">
+	<h1>Проверка целостности дистрибутива Lubuntu Linux Live USB(CD/DVD) после записи на USB(CD/DVD)</h1>
+	<br>
+		
+	<p>
+		 На этой странице описано, как проверить свой носитель с обазом Lubuntu Linux Live USB(CD/DVD) и убедиться, что он был записан без ошибок.
+		Если вы следовали указаниям предыдущих <a href="../nagrania/nagrania.html" target="_blank">записей</a>, все должно быть правильно. Однако иногда носители, которые мы используем,
+		могут быть неисправны, или данные при записи могут 
+		быть преднамеренно изменены злоумышленниками  чтобы скомпроментировать Lubuntu Linux Live USB(CD/DVD) для получения доступа к важным данным.
+		Чтобы устранить все возможности ошибок, эта проверка позволит убедиться, что каждый файл на записанном носителе верный.
+	</p>
+	<h2>
+	Проверка целостности Lubuntu Linux Live USB(CD/DVD).
+	</h2>
+	
+	<p>
+	1.Вставьте носитель с  Lubuntu Linux Live USB(CD/DVD) в компьютер, на котором вы хотите запустить ОС.
+	</p>
+	
+	<p>
+	2. Настройте компьютер для <a href="../nagrania/start_from_iso.html" target="_blank">загрузки</a> с USB(CD/DVD)
+	</p>
+	<p>
+	3.Включите или перезагрузите компьютер.
+	</p>
+	
+	<p>
+	4. В меню Lubuntu Linux Live USB(CD/DVD) выберите «Check CD for Defects»
+	</p>
+	
+	<p>
+		<img src="../img/chek_after_burn.png" alt="Проверка целостности Lubuntu Linux Live USB(CD/DVD)." title="Проверка целостности Lubuntu Linux Live USB(CD/DVD).">.
+	</p>
+	
+	<p>
+	5.Дождитесь завершения этого процесса, и сообщения о результатах проверки файлов.
+	</p>
+	
+		<p>
+		<img src="../img/chek_after_burn2.png" alt="Проверка целостности Lubuntu Linux Live USB(CD/DVD)." title="Проверка целостности Lubuntu Linux Live USB(CD/DVD).">.
+		
+	</p>
+	
+	<p>
+	Для Lubuntu Linux Live USB(CD/DVD) картинуи будут отличаться, но пункты меню такие же. Нас интересует результат проверки должно быть - "Chek finished, 0 cheksum failed" или  "Chek finished, no errors found"
+	</p>
+	
+	<h2>
+	Особенности проверки целостности Lubuntu Linux Live USB.
+	</h2>
+	<p>
+	 <a href="http://cdimage.ubuntu.com/lubuntu/releases/18.04.1/release/MD5SUMS" target="_blank">Здесь</a> вы можете найти md5sum Lubuntu iso. Вышеуказанное значение md5 является контрольной суммой всего диска, а не отдельных файлов.
+	 Когда вы готовите загрузочный USB, 
+	 файлы из iso копируются на USB-носитель, а загрузочный запись USB перезаписывается, что делает его загрузочным. В результате мы видим что, один файл (например, lubuntu-18.04.1-desktop-amd64.iso)
+	с суммой md5 (7b0a543da70aafe476796f536842d408) теперь не существует, и вместо этого на USB присутствует несколько файлов. Таким образом, у вас нет iso файла на USB, чтобы сравнить исходную 
+	сумму md5 lubuntu iso. Если вы хотите проверить целостность каждого из файлов отдельно, вам необходимо загрузить с USB-устройства, а затем выбрать «Check CD for Defects» из меню загрузки. 
+	В каждом lubuntu iso есть файл ms5sum.txt, который содержит md5sum каждого отдельного файла в iso. Параметр «Check CD for Defects» проверяет md5sum каждого файла с помощью списка md5,
+	присутствующего в iso. Тоже можно сделать уже из самой Lubuntu Linux Live USB просто перейдите в  USB диск в Lubuntu и запустите md5sum -c md5sum.txt это выполнит проверку целостности отдельных 
+	файлов и при усешном завершении проверки подтвердит целостность системы.
+	</p>
+	<p>
+	Открываем командную строку:
+	</p>
+	<p>
+		- df - отобразит список устройств;
+	</p>
+	<p>
+		- cd /cdrom - переходим на диск;
+	</p>
+	<p>
+		- ls - список файлов на диске;
+	</p>
+	<p>
+		- md5sum -c md5sum.txt - проверяем целостность файлов системы, займет время, везде должно быть ОК.
+	</p>
+	<p>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/MPp0ZJVirvs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</p>
+	<br>
+	
+	<p>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/o3nTHObCu0w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</p>
+	
+	<br>
+	<br>
+	
+	<div align="right">
+		Использовался материал:
+		<br>
+		<a href="https://askubuntu.com/questions/547332/can-an-integrity-check-be-run-against-a-usb-boot-disk/547369#547369" target="_blank">askubuntu.com</a><br>
+		<a href="https://help.ubuntu.com/community/Installation/CDIntegrityCheck#Verifying_the_CD.2BAC8-DVD_Integrity" target="_blank">help.ubuntu.com</a><br>
+		<a href="https://help.ubuntu.com/community/HowToMD5SUM" target="_blank">help.ubuntu.com</a><br>
+		<p>
+			admin@afterche.com
+			<br>
+			11.2018 г.
+		</p>
+		<br> 
+	</div>
+	<div align="right">
+		<!-- uSocial -->
+<script async src="https://usocial.pro/usocial/usocial.js?v=6.1.4" data-script="usocial" charset="utf-8"></script>
+<div class="uSocial-Share" data-pid="975bd19eabfc897487b98989825ab398" data-type="share" data-options="round-rect,style1,default,absolute,horizontal,size32,eachCounter0,counter0,nomobile" data-social="fb,telegram,twi,ok,gPlus,lj,vk"></div>
+<!-- /uSocial -->
+	</div>
+
+	<hr align="right" width="300" size="4" color="#ff9900" >
+
+	<<p>
+		<a href="../nagrania/make_send_transaction.html">Что такое air-gapped computer. Создаем кошельки, отправляем транзакции используя изолированный компьютер с Lubuntu Linux Live USB(CD/DVD).</a>
+	</p>
+	
+	<p>
+		<a href="../nagrania/save_you_priva.html">Защитите вашу конфиденциальность при использовании криптовалют.</a>
+	</p>
+	
+	<p>
+		<a href="../nagrania/secure_online_banking.html">Защитите Ваши интернет платежи с помощью Linux Live CD(USB).</a>
+	</p>	
+		
+	<p>
+		<a href="../nagrania/burn_live_cd.html">Создание Lubuntu Linux Live CD в Windows.</a>
+	</p>
+	
+	<p>
+		<a href="../nagrania/burn_live_usb.html">Создание Lubuntu Linux Live USB в Windows.</a>
+	</p>
+	
+	<p>
+		<a href="../nagrania/chek_iso.html">Проверка целостности дистрибутива Lubuntu Linux Live USB(CD/DVD) в Windows.</a>
+	</p>
+	
+	<p>
+		<a href="../nagrania/chek_iso_afterburn.html">Проверка целостности дистрибутива Lubuntu Linux Live USB(CD/DVD) после записи на USB(CD/DVD).</a>
+	</p>
+	
+	<p>
+		<a href="../nagrania/start_from_iso.html">Как загрузить компьютер с CD или USB-накопителя. Загружаемся в чистую ОС  с Lubuntu Linux Live USB(CD).</a>
+	</p>
+	
+	<p>
+		<a href="../nagrania/Research_How_Much_Worth.html">Какое количество $USD было переведено с использованием первой десятки криптовалют за последнии 24 часа.</a>
+	</p>
+	
+            <table align="center">
+               <tr>
+                  <td width=33%>
+                  </td>
+                  <td width=33%>
+                     <p align="left"><a href="../hashdonate/hashdonate.html"  target="_blank"><img src="../img/DogecoinAcceptedHere.png" alt="Dogecoin Accepted Here" title="Dogecoin Accepted Here"></a></p>
+                  </td>
+                  <td width=33% >
+                  </td>
+               </tr>
+            </table>
+			<table align="center">
+            
+            <tr>
+            </tr>
+            <tr>
+               <td  align="center">
+                  <br>
+                  <h2>
+                     <a href="../index.html">Home</a> &nbsp; <a href="../nagrania/nagrania.html">Nagrania</a>  &nbsp; <a href="../project/project.html">Projects</a>
+                  </h2>
+                  <br>
+                  <br>
+               </td>
+            </tr>
+            <tr>
+               <td   align="center">
+                  <a href="https://t.me/afterche"  target="_blank"><img src="../img/Telegramm.png" alt="Telegramm afterche" title="telegramm afterche"></a> &nbsp;
+                  <a href="https://github.com/rfidinventory/afterche" target="_blank"><img src="../img/github.jpg" alt="GitHub afterche" title="GitHub afterche"></a> &nbsp;
+                  <a href="https://www.youtube.com/channel/UClfpl-DttkBqh3u1xGV3G-w" target="_blank"><img src="../img/youtube.jpg" alt="Youtube afterche" title="Youtube afterche"></a> &nbsp;
+                  <a href="https://vk.com/postfactums" target="_blank"><img src="../img/vk.png" alt="vk postfactums" title="vk postfactums"></a> &nbsp;
+                  <a href="../contact/contact.html"><img src="../img/contact.jpg" alt="contact afterche" title="contact afterche"></a>
+               </td>
+            </tr>
+         </table>
+
+</div>
+<!--div id="content"--> 
+	
+	<div id="footer">
+		  <a href="../contact/contact.html"><strong>admin@afterche.com</strong></a>
+	</div>
+
+</div>
+<!--div id="container" align="center"-->
+
+</body>
+</html>
+
