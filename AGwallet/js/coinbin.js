@@ -845,7 +845,7 @@ $(document).ready(function() {
 						videoSource.appendChild(option);
 					}
 				}
-				console.log ("ea26")
+				console.log ("ea26-1")
 				scannerStart();
 				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
 			}
