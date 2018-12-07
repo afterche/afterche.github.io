@@ -839,7 +839,7 @@ $(document).ready(function() {
 					console.log ('deviceInfo.deviceId='+deviceInfo.deviceId);
 					console.log ('deviceInfo.kind='+deviceInfo.kind);
 					console.log ('deviceInfo.label='+deviceInfo.label);
-					if (deviceInfo.kind === 'audioinput') {
+					if (deviceInfo.kind === 'videoinput') {
 						alert ("finde");
 						option.text = deviceInfo.kind + ' ' + i;
 						console.log ('option.text='+option.text);
