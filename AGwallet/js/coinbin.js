@@ -833,9 +833,9 @@ $(document).ready(function() {
 				for (var i = 0; i !== deviceInfos.length; ++i) {
 					
 					var deviceInfo = deviceInfos[i];
-					console.log (sourceInfo);
+					console.log (deviceInfo);
 					var option = document.createElement('option');
-					option.value = deviceInfos.id;
+					option.value = deviceInfo.id;
 					console.log (deviceInfo.kind);
 					console.log (deviceInfo.label);
 					if (deviceInfo.kind === 'videoinput') {
@@ -844,7 +844,9 @@ $(document).ready(function() {
 						videoSelect.appendChild(option);
 					}
 				}
-				
+				console.log ("ea26")
+				scannerStart();
+				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
 			}
 
 			$("#videoSource").unbind("change").change(function(){
@@ -853,9 +855,7 @@ $(document).ready(function() {
 			});
 			
 		
-		//console.log ("ea26")
-		//scannerStart();
-		//$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
+		
 	});
 	//--- afterche
 	
