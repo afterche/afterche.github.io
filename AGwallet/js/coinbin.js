@@ -818,6 +818,7 @@ $(document).ready(function() {
 	$("#videoSource").change(function(){
 				console.log ("videoSource change")
 				scannerStart()
+				("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 	});
 			
 			
