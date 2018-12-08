@@ -801,6 +801,8 @@ $(document).ready(function() {
 						option.text = sourceInfo.label || 'camera ' + ($("select#videoSource options").length + 1);
 						if (f===0){
 							f++;
+							$(option).appendTo("select#videoSource");
+						  alert ("find1");
 							
 						} else {
 						  $(option).appendTo("select#videoSource");
