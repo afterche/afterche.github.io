@@ -958,6 +958,7 @@ $(document).ready(function() {
 		  track.stop();
 		  alert ('track.stop()');
 		});
+		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 	  }
 		
 		console.log('videoSelect.value= ', videoSelect.value);
@@ -981,7 +982,7 @@ $(document).ready(function() {
 	//--- afterche
 	
 		 function scannerStart(){
-			 alert ('new video5');
+			 alert ('new video7');
 			 var constraints = {
 			video: {
 			  deviceId: {exact: videoSelect.value}
