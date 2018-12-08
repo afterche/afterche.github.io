@@ -932,7 +932,11 @@ $(document).ready(function() {
 						//alert ("find777");
 						option.text = deviceInfo.kind + ' ' + i;
 						console.log ('option.text='+option.text);
-						$(option).appendTo("select#videoSource");
+						if (f===0){
+							f++;
+						} else {
+						  $(option).appendTo("select#videoSource");
+						}
 					}
 				}
 				
