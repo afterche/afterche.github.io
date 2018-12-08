@@ -816,9 +816,9 @@ $(document).ready(function() {
 		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 			});
 
-			$("#videoSource").unbind("change").change(function(){
-				scannerStart()
-			});
+			//$("#videoSource").unbind("change").change(function(){
+				//scannerStart()
+			//});
 
 		/* } else {
 			$("#videoSource").addClass("hidden");
