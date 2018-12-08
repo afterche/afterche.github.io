@@ -789,7 +789,15 @@ $(document).ready(function() {
 	/* code for the qr code scanner */
 
 	$(".qrcodeScanner").click(function(){
-		//if ((typeof MediaStreamTrack === 'function') && typeof MediaStreamTrack.getSources === 'function'){
+		'use strict';
+		
+		console.log ("ea");
+		function handleError(error) {
+			console.log('navigator.getUserMedia error: ', error);
+		}
+		
+		navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+		
 			function gotDevices(deviceInfos){
 				console.log ("ea2");
 				var f = 0;
@@ -803,7 +811,7 @@ $(document).ready(function() {
 					console.log ('deviceInfo.deviceId='+deviceInfo.deviceId);
 					console.log ('deviceInfo.kind='+deviceInfo.kind);
 					//console.log ('deviceInfo.label='+deviceInfo.label);
-					if (deviceInfo.kind === 'videoinput') {
+					if (deviceInfo.kind === 'audioinput') {
 						alert ("find777");
 						option.text = deviceInfo.kind + ' ' + i;
 						console.log ('option.text='+option.text);
@@ -817,23 +825,17 @@ $(document).ready(function() {
 
 			$("#videoSource").change(function(){
 				console.log ("videoSource change")
+				alert ("videoSource.change");
 				scannerStart();
 				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 			});
-
-			//$("#videoSource").unbind("change").change(function(){
-				//scannerStart()
-			//});
-
-		/* } else {
-			$("#videoSource").addClass("hidden");
-		} */
 		
 	});
 
 	function scannerStart(){
 		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || false;
 		if(navigator.getUserMedia){
+			alert ("new video");
 			if (!!window.stream) {
 				$("video").attr('src',null);
 				window.stream.stop();
