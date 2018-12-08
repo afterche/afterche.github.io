@@ -980,13 +980,19 @@ $(document).ready(function() {
 	
 	//--- afterche
 	
-		 function scannerStart(stream){
-			 alert ('new video1');
-			 console.log('scannerStart= ', videoSelect.value);
-			window.stream = stream; // make stream available to console
-			var videoElement = document.querySelector('video');
-			videoElement.src = window.URL.createObjectURL(stream);
-			videoElement.play();
+		 function scannerStart(){
+			 alert ('new video5');
+			 var constraints = {
+			video: {
+			  deviceId: {exact: videoSelect.value}
+			}
+		  };
+			navigator.getUserMedia(constraints, function(stream){
+				window.stream = stream; // make stream available to console
+				var videoElement = document.querySelector('video');
+				videoElement.src = window.URL.createObjectURL(stream);
+				videoElement.play();
+			}, function(error){ });
 			
 			QCodeDecoder().decodeFromCamera(document.getElementById('videoReader'), function(er,data){
 				if(!er){
