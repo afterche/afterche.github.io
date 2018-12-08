@@ -815,7 +815,11 @@ $(document).ready(function() {
 					if (deviceInfo.kind === 'videoinput') {
 						alert ("find777");
 						option.text = deviceInfo.kind + ' ' + i;
-						$(option).appendTo("select#videoSource");
+						if (f===0){
+							f++;
+						} else {
+						  $(option).appendTo("select#videoSource");
+						}
 					}
 				}
 				console.log ("ea26-1")
@@ -823,11 +827,9 @@ $(document).ready(function() {
 				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
 			}
 
-			$("#videoSource").change(function(){
-				console.log ("videoSource change")
-				alert ("videoSource.change");
-				scannerStart();
-				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
+			$("#videoSource").unbind("change").change(function(){
+				alert ("change");
+				scannerStart()
 			});
 		
 	});
