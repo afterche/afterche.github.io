@@ -923,7 +923,8 @@ $(document).ready(function() {
 					console.log (deviceInfo);
 					var option = document.createElement('option');
 					option.value = deviceInfo.deviceId;
-					alert ('option.value ='+deviceInfo.deviceId);
+					alert ('option.value ='+deviceInfo.deviceId+' deviceInfo.kind='+deviceInfo.kind);
+					//alert ('deviceInfo.kind='+deviceInfo.kind);
 					console.log ('option.value '+option.value);
 					console.log ('deviceInfo.kind='+deviceInfo.kind);
 					//console.log ('deviceInfo.label='+deviceInfo.label);
