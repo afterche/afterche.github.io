@@ -808,13 +808,13 @@ $(document).ready(function() {
 					console.log (deviceInfo);
 					var option = document.createElement('option');
 					option.value = deviceInfo.deviceId;
+					alert('deviceInfo.deviceId='+deviceInfo.deviceId);
 					console.log ('deviceInfo.deviceId='+deviceInfo.deviceId);
 					console.log ('deviceInfo.kind='+deviceInfo.kind);
 					//console.log ('deviceInfo.label='+deviceInfo.label);
 					if (deviceInfo.kind === 'videoinput') {
 						alert ("find777");
 						option.text = deviceInfo.kind + ' ' + i;
-						console.log ('option.text='+option.text);
 						$(option).appendTo("select#videoSource");
 					}
 				}
@@ -842,6 +842,7 @@ $(document).ready(function() {
   			}
 
 			var videoSource = $("select#videoSource").val();
+			alert ("videoSource ="+videoSource);
 			var constraints = {
 				video: {
 					optional: [{sourceId: videoSource}]
@@ -853,7 +854,7 @@ $(document).ready(function() {
 				var videoElement = document.querySelector('video');
 				videoElement.src = window.URL.createObjectURL(stream);
 				videoElement.play();
-			}, function(error){ });
+			}, function(error){alert ("error ="+error); });
 
 			QCodeDecoder().decodeFromCamera(document.getElementById('videoReader'), function(er,data){
 				if(!er){
