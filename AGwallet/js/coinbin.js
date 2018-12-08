@@ -788,7 +788,7 @@ $(document).ready(function() {
 
 	/* code for the qr code scanner */
 
-	/* $(".qrcodeScanner").click(function(){
+	$(".qrcodeScanner").click(function(){
 		if ((typeof MediaStreamTrack === 'function') && typeof MediaStreamTrack.getSources === 'function'){
 			MediaStreamTrack.getSources(function(sourceInfos){
 				var f = 0;
@@ -796,10 +796,16 @@ $(document).ready(function() {
 				for (var i = 0; i !== sourceInfos.length; ++i) {
 					var sourceInfo = sourceInfos[i];
 					var option = document.createElement('option');
-					option.value = sourceInfo.id;
-					if (sourceInfo.kind === 'video') {
+					option.value = sourceInfo.deviceId;
+					if (sourceInfo.kind === 'videoinput') {
 						option.text = sourceInfo.label || 'camera ' + ($("select#videoSource options").length + 1);
-						$(option).appendTo("select#videoSource");
+						if (f===0){
+							f++;
+							
+						} else {
+						  $(option).appendTo("select#videoSource");
+						  alert ("find777");
+						}
  					}
 				}
 			});
@@ -813,204 +819,9 @@ $(document).ready(function() {
 		}
 		scannerStart();
 		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
-	}); */
-		
-	/*  */
-			
-			
-			
-	//+++ afterche videoinput
-	/* $(".qrcodeScanner").click(function(){
-		'use strict';
-		
-		console.log ("ea");
-		function handleError(error) {
-			console.log('navigator.getUserMedia error: ', error);
-		}
-		
-		navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-		
-			function gotDevices(deviceInfos){
-				console.log ("ea2");
-				var f = 0;
-				$("select#videoSource").html("");
-				for (var i = 0; i !== deviceInfos.length; ++i) {
-					
-					var deviceInfo = deviceInfos[i];
-					console.log (deviceInfo);
-					var option = document.createElement('option');
-					option.value = deviceInfo.deviceId;
-					console.log ('deviceInfo.deviceId='+deviceInfo.deviceId);
-					console.log ('deviceInfo.kind='+deviceInfo.kind);
-					//console.log ('deviceInfo.label='+deviceInfo.label);
-					if (deviceInfo.kind === 'audioinput') {
-						alert ("find777");
-						option.text = deviceInfo.kind + ' ' + i;
-						console.log ('option.text='+option.text);
-						$(option).appendTo("select#videoSource");
-					}
-				}
-				console.log ("ea26-1")
-				scannerStart();
-				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
-			}
-
-			$("#videoSource").change(function(){
-				console.log ("videoSource change")
-				scannerStart();
-				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
-			});
-	}); 
-	console.log ("ea");
-		function handleError(error) {
-			console.log('navigator.getUserMedia error: ', error);
-		}
-		
-		navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-		
-			function gotDevices(deviceInfos){
-				console.log ("ea2");
-				var f = 0;
-				$("select#videoSource").html("");
-				for (var i = 0; i !== deviceInfos.length; ++i) {
-					
-					var deviceInfo = deviceInfos[i];
-					console.log (deviceInfo);
-					var option = document.createElement('option');
-					option.value = deviceInfo.deviceId;
-					console.log ('deviceInfo.deviceId='+deviceInfo.deviceId);
-					console.log ('deviceInfo.kind='+deviceInfo.kind);
-					//console.log ('deviceInfo.label='+deviceInfo.label);
-					if (deviceInfo.kind === 'audioinput') {
-						alert ("find777");
-						option.text = deviceInfo.kind + ' ' + i;
-						console.log ('option.text='+option.text);
-						$(option).appendTo("select#videoSource");
-					}
-				}
-				console.log ("ea26-1")
-				scannerStart();
-				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
-			}
-
-			$("#videoSource").change(function(){
-				console.log ("videoSource change")
-				scannerStart();
-				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
-			});
 	});
-	
-	*/
-	
-	
-	$(".qrcodeScanner").click(function(){
-		'use strict';
-		
-		var videoElement = document.querySelector('video');
-		var videoSelect = document.querySelector('select#videoSource');
 
-		navigator.mediaDevices.enumerateDevices().then(gotDevices).then(getStream).catch(handleError);
-
-		videoSelect.onchange = getStream;
-
-		function gotDevices(deviceInfos){
-				console.log ("ea2");
-				var f = 0;
-				$("select#videoSource").html("");
-				for (var i = 0; i !== deviceInfos.length; ++i) {
-					
-					var deviceInfo = deviceInfos[i];
-					console.log (deviceInfo);
-					var option = document.createElement('option');
-					option.value = deviceInfo.deviceId;
-					alert ('option.value ='+deviceInfo.deviceId+' deviceInfo.kind='+deviceInfo.kind);
-					//alert ('deviceInfo.kind='+deviceInfo.kind);
-					console.log ('option.value '+option.value);
-					console.log ('deviceInfo.kind='+deviceInfo.kind);
-					//console.log ('deviceInfo.label='+deviceInfo.label);
-					if (deviceInfo.kind === 'videoinput') {
-						//alert ("find777");
-						option.text = deviceInfo.kind + ' ' + i;
-						console.log ('option.text='+option.text);
-						if (f===0){
-							f++;
-						} else {
-						  $(option).appendTo("select#videoSource");
-						}
-					}
-				}
-				
-				//console.log ("ea26-1")
-				//scannerStart();
-				//$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
-		}
-
-			//$("#videoSource").change(function(){
-			//	console.log ("videoSource change")
-			//	scannerStart();
-			//	$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
-			//});
-			
-
-	function getStream() {
-	  if (window.stream) {
-		window.stream.getTracks().forEach(function(track) {
-		  track.stop();
-		  alert ('track.stop()');
-		});
-		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
-	  }
-		
-		console.log('videoSelect.value= ', videoSelect.value);
-		alert ('videoSelect.value= '+videoSelect.value);
-		 var constraints = {
-			video: {
-			  deviceId: {exact: videoSelect.value}
-			}
-		  };
-
-		navigator.mediaDevices.getUserMedia(constraints).
-		then(scannerStart).catch(handleError);
-	
-	}
-
-	function handleError(error) {
-		  alert('Error: '+ error);
-		}
-
-	
-	//--- afterche
-	
-		 function scannerStart(){
-			 alert ('new video7');
-			 var constraints = {
-			video: {
-			  deviceId: {exact: videoSelect.value}
-			}
-		  };
-			navigator.getUserMedia(constraints, function(stream){
-				window.stream = stream; // make stream available to console
-				var videoElement = document.querySelector('video');
-				videoElement.src = window.URL.createObjectURL(stream);
-				videoElement.play();
-			}, function(error){ });
-			
-			QCodeDecoder().decodeFromCamera(document.getElementById('videoReader'), function(er,data){
-				if(!er){
-					var match = data.match(/^bitcoin\:([13][a-z0-9]{26,33})/i);
-					var result = match ? match[1] : data;
-					$(""+$("#qrcode-scanner-callback-to").html()).val(result);
-					$("#qrScanClose").click();
-				}
-			});
-		}
-	});
-	
-	
-	
-	
-	
-	/* function scannerStart(){
+	function scannerStart(){
 		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || false;
 		if(navigator.getUserMedia){
 			if (!!window.stream) {
@@ -1019,8 +830,6 @@ $(document).ready(function() {
   			}
 
 			var videoSource = $("select#videoSource").val();
-			console.log ("videoSource="+videoSource);
-			alert ("videoSource="+videoSource);
 			var constraints = {
 				video: {
 					optional: [{sourceId: videoSource}]
@@ -1046,7 +855,7 @@ $(document).ready(function() {
 			$("#videoReaderError").removeClass("hidden");
 			$("#videoReader, #videoSource").addClass("hidden");
 		}
-	} */
+	}
 
 	/* redeem from button code */
 
