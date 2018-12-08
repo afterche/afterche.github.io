@@ -923,39 +923,40 @@ $(document).ready(function() {
 					console.log (deviceInfo);
 					var option = document.createElement('option');
 					option.value = deviceInfo.deviceId;
-					alert ('option.value =',option.value);
+					alert ('option.value ='+deviceInfo.deviceId);
 					console.log ('option.value '+option.value);
 					console.log ('deviceInfo.kind='+deviceInfo.kind);
 					//console.log ('deviceInfo.label='+deviceInfo.label);
-					if (deviceInfo.kind === 'audioinput') {
-						alert ("find777");
+					if (deviceInfo.kind === 'videoinput') {
+						//alert ("find777");
 						option.text = deviceInfo.kind + ' ' + i;
 						console.log ('option.text='+option.text);
 						$(option).appendTo("select#videoSource");
 					}
 				}
-				console.log ("ea26-1")
-				scannerStart();
-				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
+				
+				//console.log ("ea26-1")
+				//scannerStart();
+				//$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
 		}
 
-			$("#videoSource").change(function(){
-				console.log ("videoSource change")
-				scannerStart();
-				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
-			});
+			//$("#videoSource").change(function(){
+			//	console.log ("videoSource change")
+			//	scannerStart();
+			//	$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
+			//});
 			
 
 	function getStream() {
 	  if (window.stream) {
 		window.stream.getTracks().forEach(function(track) {
 		  track.stop();
-		  alert ('new video1');
+		  alert ('track.stop()');
 		});
 	  }
 		
 		console.log('videoSelect.value= ', videoSelect.value);
-		alert ('videoSelect.value= ', videoSelect.value);
+		alert ('videoSelect.value= '+videoSelect.value);
 		 var constraints = {
 			video: {
 			  deviceId: {exact: videoSelect.value}
