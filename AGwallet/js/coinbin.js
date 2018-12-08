@@ -794,6 +794,7 @@ $(document).ready(function() {
 				var f = 0;
 				$("select#videoSource").html("");
 				for (var i = 0; i !== sourceInfos.length; ++i) {
+					alert ("2");
 					var sourceInfo = sourceInfos[i];
 					var option = document.createElement('option');
 					option.value = sourceInfo.deviceId;
@@ -802,7 +803,7 @@ $(document).ready(function() {
 						if (f===0){
 							f++;
 							$(option).appendTo("select#videoSource");
-						  alert ("find1");
+						  alert ("2");
 							
 						} else {
 						  $(option).appendTo("select#videoSource");
@@ -810,6 +811,9 @@ $(document).ready(function() {
 						}
  					}
 				}
+				alert ("3");
+				scannerStart();
+		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 			});
 
 			$("#videoSource").unbind("change").change(function(){
@@ -819,8 +823,7 @@ $(document).ready(function() {
 		/* } else {
 			$("#videoSource").addClass("hidden");
 		} */
-		scannerStart();
-		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
+		
 	});
 
 	function scannerStart(){
