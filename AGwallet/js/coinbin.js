@@ -789,7 +789,7 @@ $(document).ready(function() {
 	/* code for the qr code scanner */
 
 	$(".qrcodeScanner").click(function(){
-		if ((typeof MediaStreamTrack === 'function') && typeof MediaStreamTrack.getSources === 'function'){
+		//if ((typeof MediaStreamTrack === 'function') && typeof MediaStreamTrack.getSources === 'function'){
 			MediaStreamTrack.getSources(function(sourceInfos){
 				var f = 0;
 				$("select#videoSource").html("");
@@ -814,9 +814,9 @@ $(document).ready(function() {
 				scannerStart()
 			});
 
-		} else {
+		/* } else {
 			$("#videoSource").addClass("hidden");
-		}
+		} */
 		scannerStart();
 		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 	});
