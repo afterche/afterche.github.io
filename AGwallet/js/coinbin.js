@@ -970,7 +970,7 @@ $(document).ready(function() {
 	}
 
 	function handleError(error) {
-		  console.log('Error: ', error);
+		  alert('Error: '+ error);
 		}
 
 	
