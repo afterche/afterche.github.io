@@ -850,6 +850,7 @@ $(document).ready(function() {
 			};
 
 			navigator.getUserMedia(constraints, function(stream){
+				alert ("videoSource ="+videoSource);
 				window.stream = stream; // make stream available to console
 				var videoElement = document.querySelector('video');
 				videoElement.src = window.URL.createObjectURL(stream);
@@ -865,6 +866,7 @@ $(document).ready(function() {
 				}
 			});
 		} else {
+			alert ("else");
 			$("#videoReaderError").removeClass("hidden");
 			$("#videoReader, #videoSource").addClass("hidden");
 		}
