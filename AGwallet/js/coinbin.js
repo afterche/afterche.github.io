@@ -790,30 +790,35 @@ $(document).ready(function() {
 
 	$(".qrcodeScanner").click(function(){
 		//if ((typeof MediaStreamTrack === 'function') && typeof MediaStreamTrack.getSources === 'function'){
-			MediaStreamTrack.getSources(function(sourceInfos){
+			function gotDevices(deviceInfos){
+				console.log ("ea2");
 				var f = 0;
 				$("select#videoSource").html("");
-				for (var i = 0; i !== sourceInfos.length; ++i) {
-					alert ("2");
-					var sourceInfo = sourceInfos[i];
+				for (var i = 0; i !== deviceInfos.length; ++i) {
+					
+					var deviceInfo = deviceInfos[i];
+					console.log (deviceInfo);
 					var option = document.createElement('option');
-					option.value = sourceInfo.deviceId;
-					if (sourceInfo.kind === 'videoinput') {
-						option.text = sourceInfo.label || 'camera ' + ($("select#videoSource options").length + 1);
-						if (f===0){
-							f++;
-							$(option).appendTo("select#videoSource");
-						  alert ("2");
-							
-						} else {
-						  $(option).appendTo("select#videoSource");
-						  alert ("find777");
-						}
- 					}
+					option.value = deviceInfo.deviceId;
+					console.log ('deviceInfo.deviceId='+deviceInfo.deviceId);
+					console.log ('deviceInfo.kind='+deviceInfo.kind);
+					//console.log ('deviceInfo.label='+deviceInfo.label);
+					if (deviceInfo.kind === 'videoinput') {
+						alert ("find777");
+						option.text = deviceInfo.kind + ' ' + i;
+						console.log ('option.text='+option.text);
+						$(option).appendTo("select#videoSource");
+					}
 				}
-				alert ("3");
+				console.log ("ea26-1")
 				scannerStart();
-		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
+				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
+			}
+
+			$("#videoSource").change(function(){
+				console.log ("videoSource change")
+				scannerStart();
+				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 			});
 
 			//$("#videoSource").unbind("change").change(function(){
