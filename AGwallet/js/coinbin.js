@@ -789,62 +789,41 @@ $(document).ready(function() {
 	/* code for the qr code scanner */
 
 	$(".qrcodeScanner").click(function(){
-		'use strict';
-		
-		console.log ("ea");
-		function handleError(error) {
-			console.log('navigator.getUserMedia error: ', error);
-		}
-		
-		navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
-		
-			function gotDevices(deviceInfos){
-				console.log ("ea2");
+		if ((typeof MediaStreamTrack === 'function') && typeof MediaStreamTrack.getSources === 'function'){
+			MediaStreamTrack.getSources(function(sourceInfos){
 				var f = 0;
 				$("select#videoSource").html("");
-				for (var i = 0; i !== deviceInfos.length; ++i) {
-					
-					var deviceInfo = deviceInfos[i];
-					console.log (deviceInfo);
+				for (var i = 0; i !== sourceInfos.length; ++i) {
+					var sourceInfo = sourceInfos[i];
 					var option = document.createElement('option');
-					option.value = deviceInfo.deviceId;
-					alert('deviceInfo.deviceId='+deviceInfo.deviceId);
-					console.log ('deviceInfo.deviceId='+deviceInfo.deviceId);
-					console.log ('deviceInfo.kind='+deviceInfo.kind);
-					//console.log ('deviceInfo.label='+deviceInfo.label);
-					if (deviceInfo.kind === 'videoinput') {
-						alert ("find777");
-						option.text = deviceInfo.kind + ' ' + i;
-						if (f===0){
-							f++;
-						} else {
-						  $(option).appendTo("select#videoSource");
-						}
-					}
+					option.value = sourceInfo.id;
+					if (sourceInfo.kind === 'video') {
+						option.text = sourceInfo.label || 'camera ' + ($("select#videoSource options").length + 1);
+						$(option).appendTo("select#videoSource");
+ 					}
 				}
-				console.log ("ea26-1")
-				scannerStart();
-				$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));	
-			}
+			});
 
 			$("#videoSource").unbind("change").change(function(){
-				alert ("change");
 				scannerStart()
 			});
-		
+
+		} else {
+			$("#videoSource").addClass("hidden");
+		}
+		scannerStart();
+		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 	});
 
-	function scannerStart(){
+	/* function scannerStart(){
 		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || false;
 		if(navigator.getUserMedia){
-			alert ("new video");
 			if (!!window.stream) {
 				$("video").attr('src',null);
 				window.stream.stop();
   			}
 
 			var videoSource = $("select#videoSource").val();
-			alert ("videoSource ="+videoSource);
 			var constraints = {
 				video: {
 					optional: [{sourceId: videoSource}]
@@ -852,12 +831,11 @@ $(document).ready(function() {
 			};
 
 			navigator.getUserMedia(constraints, function(stream){
-				alert ("videoSource ="+videoSource);
 				window.stream = stream; // make stream available to console
 				var videoElement = document.querySelector('video');
 				videoElement.src = window.URL.createObjectURL(stream);
 				videoElement.play();
-			}, function(error){alert ("error ="+error); });
+			}, function(error){ });
 
 			QCodeDecoder().decodeFromCamera(document.getElementById('videoReader'), function(er,data){
 				if(!er){
@@ -868,11 +846,10 @@ $(document).ready(function() {
 				}
 			});
 		} else {
-			alert ("else");
 			$("#videoReaderError").removeClass("hidden");
 			$("#videoReader, #videoSource").addClass("hidden");
 		}
-	}
+	} */
 
 	/* redeem from button code */
 
