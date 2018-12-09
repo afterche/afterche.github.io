@@ -1502,9 +1502,9 @@
 				<h4 class="modal-title">qrcode scanner</h4>
 				</div>
 
-				<div class="modal-body" align="center">
+				
 					<div class="modal-body" align="center">
-					<p id="code">Empty</p>
+					<p id="code">Empty2</p>
 						<video id="preview" muted autoplay style="width:100%;height:100%"></video>
 						<script type="text/javascript">
 						  let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
@@ -1515,16 +1515,17 @@
 						  });
 						  Instascan.Camera.getCameras().then(function (cameras) {
 							if (cameras.length > 0) {
-							  scanner.start(cameras[1]);
+								alert ('Ya');
+							  scanner.start(cameras[0]);
 							} else {
-							  console.error('No cameras found.');
+							  alert ('No cameras found.');
 							}
 						  }).catch(function (e) {
 							console.error(e);
 						  });
 						</script>
-				</div>
-				</div>
+					</div>
+				
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" id="qrScanClose">Close</button>
