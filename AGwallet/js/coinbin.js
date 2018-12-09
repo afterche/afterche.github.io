@@ -815,7 +815,7 @@ $(document).ready(function() {
 		$("#qrcode-scanner-callback-to").html($(this).attr('forward-result'));
 	});
 
-	/* function scannerStart(){
+	function scannerStart(){
 		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || false;
 		if(navigator.getUserMedia){
 			if (!!window.stream) {
@@ -849,7 +849,7 @@ $(document).ready(function() {
 			$("#videoReaderError").removeClass("hidden");
 			$("#videoReader, #videoSource").addClass("hidden");
 		}
-	} */
+	}
 
 	/* redeem from button code */
 
