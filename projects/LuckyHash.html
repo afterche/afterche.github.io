@@ -19,8 +19,8 @@
          padding-left: 10px; 
          }
       </style>
-      <meta name="keywords" content="Lucky Hash.">
-      <meta name="description" content="Lucky Hash.">
+      <meta name="keywords" content="Lucky Hash. Lucky miner">
+      <meta name="description" content="Lucky Hash. Lucky miner">
       <title>
          Lucky Hash
       </title>
@@ -34,7 +34,8 @@
                   <br>
                   <a href="www.afterche.com/projects/LuckyHash.html" ><img src="../img/LuckyHash.png" alt="LuckyHash" title="LuckyHash"></a>
                </td>
-            </tr>
+			  </tr>
+			  
          </table>
          <br>
          <div id="content">
@@ -44,20 +45,22 @@
                <a href="#" class="button24" OnClick="SetUser()">Enter</a>
             </div>
 			<div align ="center">
-				разрабатывается, но уже можно попробовать<br>
+				разрабатывается, но уже можно пробовать<br>
 				being developed, but you can already try
 			</div>
 			<br>
 			<br>
+			<p id='user' align='center'></p>
+			
 			<div align ="center" id="m"></div>
 			<table align="center">
                <tr>
                   <td >
-                     <h2 id = 'ENG' onclick="TextTranslateENG()" >
-                        ENG &nbsp; &nbsp;
+                     <h2 id = 'en' onclick="TextTranslateEN()" >
+                        EN &nbsp; &nbsp;
                      </h2>
                   <td >
-                     <h2 id = 'ENG' onclick="TextTranslateRU()" >
+                     <h2 id = 'en' onclick="TextTranslateRU()" >
                         RU
                      </h2>
                </tr>
@@ -66,22 +69,26 @@
                Как это работает.
             </h3>
             <p id = 'text1'>
-               Введите DogeCoin адрес в поле выше. Нажмите START MINING. 
+               Введите ВАШ Dogecoin адрес в поле выше. <a href="../nagrania/fast_make_dogecoin_wallet_ru.html"  target="_blank">Где взять МОЙ Dogecoin адрес?</a> Нажмите START MINING. 
             </p>
             <p id = 'text2'>
                Никакого ПО, никаких скрытых скриптов майнеров и т.п. не устанавливается на
                Ваш ПК. Нажали START MINING - майните, нажали ПАУЗА закрыли или обновили эту страницу майнинг
                останавливается.
             </p>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <p>
-               Hellow:
+			<h3  id='h32' align='center'>  
+               Эта игра доказуемо честна.
+            </h3>
+			<p id = 'text3'>
+               Эта игра доказуемо честна. Это означает, что сайт не сможет обмануть вас, выбрав победителя,
+			   на своё усмотрение. Все победителя выбираются случайным образом, и метод выбора победителей описан ниже.
             </p>
-            <p id="user">Enter ID:</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+           
 			<table align="center">
                <tr>
                   <td width=33%>
@@ -144,43 +151,53 @@
 	  <script language="javascript">
                var h31ru='Как это работает.';
                
-               var h31eng='How it works.';
+               var h31en='How it works.';
                	
-               var text1ru='Введите DogeCoin адрес в поле выше. Нажмите START MINING.';
+               var text1ru='Введите ВАШ Dogecoin адрес в поле выше. <a href="../nagrania/fast_make_dogecoin_wallet_ru.html"  target="_blank">Где взять МОЙ Dogecoin адрес.</a> Нажмите START MINING. ';
+               
+			   var text1en='Enter your DogeCoin address in the box above. <a href="../nagrania/fast_make_dogecoin_wallet_en.html"  target="_blank">Where can I get my Dogecoin address?</a>Click START MINING.';
                
                var text2ru='Никакого ПО, никаких скрытых скриптов майнеров и т.п. не устанавливается на\
                Ваш ПК. Нажали START MINING - майните, нажали ПАУЗА закрыли или обновили эту страницу майнинг\
                останавливается.';
-			   
-			   var text3ru='Эта лотерея доказуемо честна. Это означает, что сайт не сможет обмануть вас, выбрав победителя лотереи,\
-			   на своё усмотрение. Все победители выбираются случайным образом, и метод выбора победителей описан ниже.';
-			   
-			   var text3eng='This lottery is provably fair. What that means is that there is no way the site can cheat\
-			   you by picking a lottery winner who we favour.\
-			   All winners are picked randomly and the method for picking the winners is described below.';
-			   
-               
-               var text1eng='Enter your DogeCoin address in the box above. Click START MINING.';
-               
-               var text2eng='No software, no hidden miner scripts, etc. not installed on\
+			    
+				var text2en='No software, no hidden miner scripts, etc. not installed on\
                	Your pc. Clicked START MINING - mine, clicked PAUSE closed or updated this  page mining\
                	it stops.'
+				
+			   var text3ru='Эта игра  доказуемо честна. Это означает, что сайт не сможет обмануть вас, выбрав победителя,\
+			   на своё усмотрение. Все победителя выбираются случайным образом, и метод выбора победителей описан ниже.';
+			   
+			   var text3en='This game is provably fair. What that means is that there is no way the site can cheat\
+			   you by picking a game winner who we favour.\
+			   All winners are picked randomly and the method for picking the winner is described below.';
+			   
+               var h32ru='Эта игра  доказуемо честна';
+			   
+			   var h32en='This game is provably fair.';
+              
                
-              function TextTranslateENG(){
-               	document.getElementById('h31').innerHTML = h31eng;
-               	document.getElementById('text1').innerHTML = text1eng;
-               	document.getElementById('text2').innerHTML = text2eng;
+              function TextTranslateEN(){
+               	document.getElementById('h31').innerHTML = h31en;
+				document.getElementById('h32').innerHTML = h32en;
+               	document.getElementById('text1').innerHTML = text1en;
+               	document.getElementById('text2').innerHTML = text2en;
+				document.getElementById('text3').innerHTML = text3en;
                }
                
                 function TextTranslateRU(){
                	document.getElementById('h31').innerHTML = h31ru;
+				document.getElementById('h32').innerHTML = h32ru;
                	document.getElementById('text1').innerHTML = text1ru;
                	document.getElementById('text2').innerHTML = text2ru;
+				document.getElementById('text3').innerHTML = text3ru;
                }
             </script>
             <script language="javascript">
                function SetUser(){
-                 document.getElementById('user').innerHTML = document.getElementById('interID').value;
+				var hi=document.getElementById('interID').value;
+				hi = 'HI!'+hi;
+                 document.getElementById('user').innerHTML = hi;
                  var m_user=document.getElementById('user').innerHTML;
                  var newDiv= document.createElement('div');
                  newDiv.innerHTML = '<div class="coinhive-miner" align="center" style="width: 256px; height: 310px" data-key="5wS55uNWSlPdhcfca6m5xKM8qGWrf3Rb" data-user='+m_user+'> <em>Loading...</em> </div>'; 
