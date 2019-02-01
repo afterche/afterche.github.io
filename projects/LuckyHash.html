@@ -50,6 +50,13 @@
 			</div>
 			<br>
 			<br>
+			<h1 id='LH' align='center'>
+			LUCKY HASH = 5 DOGE
+			</h1>
+			
+			
+			<br>
+			<br>
 			<p id='user' align='center'></p>
 			<p id="id-of-element" align='center'> DATA FROM FILE </p>
 			<div align ="center" id="m"></div>
@@ -69,34 +76,132 @@
                Как это работает.
             </h3>
             <p id = 'text1'>
-               Введите ВАШ Dogecoin адрес в поле выше. Нажмите Enter. Нажмите START MINING. <a href="../nagrania/fast_make_dogecoin_wallet_ru.html"  target="_blank">Где взять МОЙ Dogecoin адрес?</a> 
+               Введите ВАШ Dogecoin адрес (<a href="../nagrania/fast_make_dogecoin_wallet_ru.html"  target="_blank">Где взять МОЙ Dogecoin адрес?</a>) в поле выше. Нажмите Enter. Нажмите START MINING. 
 			</p>
+			<p id = 'text2'>
+			<b>Требуется только Dogecoin адрес. Майните - добываете хэши. Чем больше хэшей добыто всеми участниками в этом раунде тем больше Dogecoin получит участник, добывший в этом раунде LUCKY HASH.
+			По завершению раунда, среди хэшей наших участников мы найдем Lucky Hash и переведем его на Dogecoin адрес участника, который его нашел. </b><br><br>
+              
+         
 			<br>
 			<h2 id='h21' align ="center" class="line">
-               Пожалуйста будьте внимательны при вводе ВАШЕГО Dogecoin адреса. Вводите только тот адрес от которого у Вас есть закрытый ключ.
-			   Мы не знаем о вас ничего, кроме Dogecoin адреса. В Lucky Hash  участвуют только Dogecoin адреса. 
+               Пожалуйста будьте внимательны при вводе ВАШЕГО Dogecoin адреса. Вводите только тот адрес от которого у Вас есть закрытый ключ. Но не вводите закрытый ключ!!!
+			   Мы не знаем о вас ничего, кроме Dogecoin адреса. В Lucky Hash  участвуют только Dogecoin адреса.<br> <br><a href="../nagrania/fast_make_dogecoin_wallet_ru.html"  target="_blank">Где взять МОЙ Dogecoin адрес?</a>
 	
             </h2>
 			
 			<br>
-            <p id = 'text2'>
-			Требуется только Dogecoin адрес. Майните - ищите хэши. По завершению раунда, среди хэшей наших участников мы найдем Lucky Hash.<br>
-               Никакого ПО, никаких скрытых скриптов майнеров и т.п. не устанавливается на
+            <br><br>
+			
+			
+			<p id='textatention'>
+			 *Никакого ПО, никаких скрытых скриптов майнеров и т.п. не устанавливается на
                Ваш ПК. Нажали START MINING майните -  получаете хэши, нажали ПАУЗА закрыли или обновили эту страницу майнинг
                останавливается. Успехов.
-            </p>
-			<h3  id='h32' align='center'>  
+			 </p>  
+			
+			<br>
+            <br>
+			<br>   
+			<h1  id='h32' align='center'>  
                Эта игра доказуемо честна.
-            </h3>
-			<p id = 'text3'>
-               Эта игра доказуемо честна. Это означает, что сайт не сможет обмануть вас, выбрав победителя,
-			   на своё усмотрение. Все победителя выбираются случайным образом, и метод выбора победителей описан ниже.
-            </p>
+            </h1>
+			<div id = 'text3'>
+				<p>
+               Эта игра  доказуемо честна. Это означает, что сайт не сможет обмануть вас, выбрав победителя,
+			   на своё усмотрение. Победитель выбирается случайным образом, метод выбора победителя описан ниже.
+			   </p>
+			   <p> 
+					1. В начале каждого раунда мы генерируем серверное начальное число для этого раунда и показываем вам хэш SHA256 этого числа. 
+					</p> 
+					<p> 
+					2. По окончании раунда мы составляем список всех идентификаторов пользователей и их хешей и сортируем его в порядке 
+					возрастания адреса пользователя Dogecoin в алфавитном порядке. 
+					</p> 
+					<p> 
+					3. Затем мы используем этот список для назначения номеров хешей для всех хешей.
+					Например, если идентификатор пользователя 1 имеет 10 хешей, а идентификатор 
+					пользователя 2 имеет 20 хешей, то идентификатор пользователя 1 будет иметь
+					номера от 0 до 9, а идентификатор пользователя 2 будет иметь номера от 10 до 29. Это делается для всех пользователей. 
+					</p> 
+					<p> 
+					4. Затем список, содержащий идентификаторы пользователя, хэши, хранящиеся у каждого пользователя, и их номера хешей публикуется
+					в текстовом файле. Этот файл также содержит общее количество хэшей, найденных в раунде, и начальное число сервера для этого раунда . 
+					</p> 
+					<p> 
+					5. MD5 хэш этого текстового файла рассчитывается. 
+					</p> 
+					<p> 
+					6. Затем записывается текущий номер блока dogecoin и определяется номер блока, который будет добыт через 120
+					блоков в будущем. Хэш блока этого будущего блока используется как «начальное число клиента»,
+					т.е. число, о котором мы не знаем, когда список на шаге 4 был опубликован. 
+					</p> 
+					<p> 
+					7. Затем делаем твит через наш твиттер-аккаунт (https://twitter.com/@afterche), содержащий ссылку на файл, созданный  
+					на шаге 4, хэш MD5 этого файла и номер будущего блока dogecoin, определенный на шаге 6. Поскольку твит 
+					не может быть отредактирован, только удален, это обеспечит метку времени, того когда был составлен список на шаге 4,
+					которая доказывает, что блок dogecoin, 
+					определенный на шаге 6, находится в будущем, т.е. мы не знаем хэш этого блока, когда генерируется список . 
+					</p> 
+					<p> 
+					8. Победивший хэш-номер - Lacky Hash будет рассчитан, как описано ниже:
+					</p> 
+					<p> 
+					- Создадим строку (STRING1) - "[SERVER SEED]:[BLOCK HASH]". 
+					</p> 
+					<p> 
+					- SHA256-хеш STRING1 рассчитывается и первые 8 символов этого хэша берутся это - (STRING2). 
+					</p> 
+					<p> 
+					- STRING2 преобразуется в десятичное число, которое дает нам число от 0 до 4 294 967 295 (NUM1). 
+					</p> 
+					<p> 
+					- Затем NUM1 умножается на (общее количество добытых в этом раунде хэшей минус 1) и делится на 4 294 967 295, чтобы получить 
+					число (NUM2) между 0 и общим количеством хэшей, меньшим 1. 
+					</p> 
+					<p> 
+					- Затем NUM2 округляется до ближайшего целого числа, которое является выигрышным хэш-числом - LUCKY HASH. 
+					</p> 
+					<br> 
+					<h2 align = "center"> 
+					ПОЧЕМУ НЕЛЬЗЯ ПОДДЕЛАТЬ РЕЗУЛЬТАТ? 
+					</h2> 
+					<p> 
+					Описанная выше система, которая используется для выбора победителя, доказуемо справедлива, поскольку в ней есть несколько мер защиты.
+					Прочитав ниже, Вы можете убедиться, что победитель выбран справедливо случайным образом. 
+					</p> 
+					<p> 
+					1. Мы предоставляем хэш SHA256 начального числа сервера, когда начинается раунд. Если мы
+					 изменим начальное число сервера в любое время, хэш SHA256 нового числа сервера не будет 
+					 совпадать с  хэшем , который мы предоставили ранее. После окончания раунда  мы показываем 
+					 начальное число сервера, которое будет использоваться для выбора победителей, хэш начального числа сервера, которое мы показываем, может 
+					 быть проверены на хеш, который мы предоставили изначально, и оба должны совпадать. 
+					</p> 
+					<p> 
+					2.Мы используем будущий хеш блока dogecoin как клиентское число, т.е. число, которое мы не знаем 
+					 . Все хэши блоков dogecoin уникальны, и никто не знает, каким будет хеш будущего блока, пока блок не будет добыт. 
+					</p> 
+					<p> 
+					3. Мы используем твиттер для публикации будущего номера блока dogecoin, списка пользователей и их хеш-номеров, а также хеша MD5 в списке пользователей. 
+					 Он предоставляет временную метку, чтобы проверить, действительно ли используемый нами хеш блока находится в будущем. Поскольку твиты не могут быть отредактированы, только удаляются - если 
+					 мы удаляем твит после того, как будущий блок был добыт и публикуем новый, вы легко поймать нас на мошенничестве, сравнив 
+					 метка времени твита и блока dogecoin. Отметка времени твита всегда должна быть меньше отметки времени 
+					 блок dogecoin, хеш которого используется в качестве клиентского числа. 
+					</p> 
+					<p> 
+					4. Мы предоставляем MD5-хэш текстового файла, содержащего список пользователей и их хэш-номера. Если даже один символ в текстовом файле изменяется после публикации хеша MD5 в твите,
+					хеш MD5 отредактированного файла не будет соответствовать хешу MD5, предоставленному в твите и это докажет, что список с момента публикации твитта не был изменен. 
+					</p>
+			   
+            </div>
             <br>
             <br>
             <br>
             <br>
             <br>
+			<p align='center'>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/Znlbgs7sxqo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</p>
            
 			<table align="center">
                <tr>
@@ -109,6 +214,19 @@
                   </td>
                </tr>
             </table>
+			<br>
+            <br>
+            <br>
+			<div align="right">
+			Нашли неточность, ошибку, есть вопросы. Пожалуйста свяжитесь с нами.
+			<br>
+			Found an inaccuracy, an error, there are questions. Please contact us.
+			<br>
+			admin@afterche.com
+			</div>
+			<br>
+            <br>
+            <br>
             <div align="right">
                <!-- uSocial -->
                <script async src="https://usocial.pro/usocial/usocial.js?v=6.1.4" data-script="usocial" charset="utf-8"></script>
@@ -162,34 +280,180 @@
                
                var h31en='How it works.';
                	
-               var text1ru=' Введите ВАШ Dogecoin адрес в поле выше. Нажмите Enter. Нажмите START MINING. <a href="../nagrania/fast_make_dogecoin_wallet_ru.html"  target="_blank">Где взять МОЙ Dogecoin адрес?</a>'
+               var text1ru=' Введите ВАШ Dogecoin адрес (<a href="../nagrania/fast_make_dogecoin_wallet_ru.html"  target="_blank">Где взять МОЙ Dogecoin адрес?</a>) в поле выше. Нажмите Enter. Нажмите START MINING.'
                
-			   var text1en='Enter your DogeCoin address in the box above. Click Enter. Click START MINING. <a href="../nagrania/fast_make_dogecoin_wallet_en.html"  target="_blank">Where can I get my Dogecoin address?</a>';
+			   var text1en='Enter your DogeCoin address (<a href="../nagrania/fast_make_dogecoin_wallet_en.html"  target="_blank">Where can I get my Dogecoin address?</a>) in the box above. Click Enter. Click START MINING. '
                
-			   var h21ru=' Пожалуйста будьте внимательны при вводе ВАШЕГО Dogecoin адреса. Вводите только тот адрес от которого у Вас есть закрытый ключ.\
-			   Мы не знаем о вас ничего, кроме Dogecoin адреса. В Lucky Hash  участвуют только Dogecoin адреса.'
+			   var h21ru=' Пожалуйста будьте внимательны при вводе ВАШЕГО Dogecoin адреса. Вводите только тот адрес от которого у Вас есть закрытый ключ. Но не вводите закрытый ключ!!!\
+			   Мы не знаем о вас ничего, кроме Dogecoin адреса. В Lucky Hash  участвуют только Dogecoin адреса.<br> <br><a href="../nagrania/fast_make_dogecoin_wallet_ru.html"  target="_blank">Где взять МОЙ Dogecoin адрес?</a>'
+	
+			   var h21en='Please be careful when entering YOUR Dogecoin addresses. Enter only the address from which you have a private key. But do not enter the private key !!!\
+					We do not know anything about you but the Dogecoin address. Only Dogecoin addresses are involved in Lucky Hash. <br> <br><a href="../nagrania/fast_make_dogecoin_wallet_en.html"  target="_blank">Where can I get my Dogecoin address?</a> '
 			   
-			   var h21en='Please be careful when entering YOUR Dogecoin addresses. Enter only the address from which you have a private key.\
-					We do not know anything about you but the Dogecoin address. Only Dogecoin addresses are involved in Lucky Hash.'
-			   
-               var text2ru='Требуется только Dogecoin адрес. Майните - ищите хэши. По завершению раунда, среди хэшей наших участников мы найдем Lucky Hash.<br>\
-               Никакого ПО, никаких скрытых скриптов майнеров и т.п. не устанавливается на\
+               var text2ru='<b>Требуется только Dogecoin адрес. Майните - добываете хэши. Чем больше хэшей добыто всеми участниками в этом раунде тем больше Dogecoin получит участник, добывший в этом раунде LUCKY HASH. По завершению раунда, среди хэшей наших участников мы найдем Lucky Hash и переведем его на Dogecoin адрес участника, который его нашел.</b>\
+              <br><br> ';
+			    
+				var text2en='<b>Only a Dogecoin address is required. Mine - look for hashes. The more hashes are mined by all participants in this round, the more Dogecoin will be received by the participant who obtained LUCKY HASH in this round. \
+				At the end of the round, among the hashes of our participants,\
+				we will find Lucky Hash and transfer it to the Dogecoin  address of the member who found it.</b><br><br> '
+				
+				var textatentionru = '*Никакого ПО, никаких скрытых скриптов майнеров и т.п. не устанавливается на\
                Ваш ПК. Нажали START MINING майните -  получаете хэши, нажали ПАУЗА закрыли или обновили эту страницу майнинг\
                останавливается. Успехов.';
-			    
-				var text2en='Only a Dogecoin address is required. Mine - look for hashes. At the end of the round, among the hashes of our participants,\
-				we will find Lucky Hash. <br>No software, no hidden miner scripts, etc. not installed on Your pc. Clicked START MINING mine - get hashes,\
-				clicked PAUSE closed or updated this page mining\
-				it stops. Good Luck.'
 				
-			   var text3ru='Эта игра  доказуемо честна. Это означает, что сайт не сможет обмануть вас, выбрав победителя,\
-			   на своё усмотрение. Все победителя выбираются случайным образом, и метод выбора победителей описан ниже.';
+				var textatentionen = '*No software, no hidden miner scripts, etc. not installed on Your pc. Clicked START MINING mine - get hashes,\
+				clicked PAUSE closed or updated this page mining\
+				it stops. Good Luck.';
+				
+			   var text3ru='<p>Эта игра  доказуемо честна. Это означает, что сайт не сможет обмануть вас, выбрав победителя,\
+			   на своё усмотрение. Победитель выбирается случайным образом, метод выбора победителя описан ниже.</p>\
+					<p> \
+					1. В начале каждого раунда мы генерируем серверное начальное число для этого раунда и показываем вам хэш SHA256 этого числа. \
+					</p> \
+					<p> \
+					2. По окончании раунда мы составляем список всех идентификаторов пользователей и их хешей и сортируем его в порядке возрастания адреса пользователя Dogecoin в алфавитном порядке. \
+					</p> \
+					<p> \
+					3. Затем мы используем этот список для назначения номеров хешей для всех хешей. Например, если идентификатор пользователя 1 имеет 10 хешей, а идентификатор пользователя 2 имеет 20 хешей, то идентификатор пользователя 1 будет иметь номера от 0 до 9, а идентификатор пользователя 2 будет иметь номера от 10 до 29. Это делается для всех пользователей. \
+					</p> \
+					<p> \
+					4. Затем список, содержащий идентификаторы пользователя, хэши, хранящиеся у каждого пользователя, и их номера хешей публикуется в текстовом файле. Этот файл также содержит общее количество хэшей, найденных в раунде, и начальное число сервера для этого раунда . \
+					</p> \
+					<p> \
+					5. MD5 хэш этого текстового файла рассчитывается. \
+					</p> \
+					<p> \
+					6. Затем записывается текущий номер блока dogecoin и определяется номер блока, который будет добыт через 120 блоков в будущем. Хэш блока этого будущего блока используется как «начальное число клиента», т.е. число, о котором мы не знаем, когда список на шаге 4 был опубликован. \
+					</p> \
+					<p> \
+					7. Затем делаем твит через наш твиттер-аккаунт (https://twitter.com/@afterche), содержащий ссылку на файл, созданный  \
+					на шаге 4, хэш MD5 этого файла и номер будущего блока dogecoin, определенный на шаге 6. Поскольку твит \
+					не может быть отредактирован, только удален, это обеспечит метку времени, того когда был составлен список на шаге 4, которая доказывает, что блок dogecoin, определенный на шаге 6, находится в будущем, т.е. мы не знаем хэш этого блока, когда генерируется список . \
+					</p> \
+					<p> \
+					8. Победивший хэш-номер - Lacky Hash будет рассчитан, как описано ниже:\
+					</p> \
+					<p> \
+					- Создадим строку (STRING1) - "[SERVER SEED]:[BLOCK HASH]". \
+					</p> \
+					<p> \
+					- SHA256-хеш STRING1 рассчитывается и первые 8 символов этого хэша берутся это - (STRING2). \
+					</p> \
+					<p> \
+					- STRING2 преобразуется в десятичное число, которое дает нам число от 0 до 4 294 967 295 (NUM1). \
+					</p> \
+					<p> \
+					- Затем NUM1 умножается на (общее количество добытых в этом раунде хэшей минус 1) и делится на 4 294 967 295, чтобы получить число (NUM2) между 0 и общим количеством хэшей, меньшим 1. \
+					</p> \
+					<p> \
+					- Затем NUM2 округляется до ближайшего целого числа, которое является выигрышным хэш-числом - LUCKY HASH. \
+					</p> \
+					<br> \
+					<h2 align = "center"> \
+					ПОЧЕМУ НЕЛЬЗЯ ПОДДЕЛАТЬ РЕЗУЛЬТАТ? \
+					</h2> \
+					<p> \
+					Описанная выше система, которая используется для выбора победителя, доказуемо справедлива, поскольку в ней есть несколько мер защиты.\
+					Прочитав ниже, Вы можете убедиться, что победитель выбран справедливо случайным образом. \
+					</p> \
+					<p> \
+					1. Мы предоставляем хэш SHA256 начального числа сервера, когда начинается раунд. Если мы\
+					 изменим начальное число сервера в любое время, хэш SHA256 нового числа сервера не будет \
+					 совпадать с  хэшем , который мы предоставили ранее. После окончания раунда  мы показываем \
+					 начальное число сервера, которое будет использоваться для выбора победителей, хэш начального числа сервера, которое мы показываем, может \
+					 быть проверены на хеш, который мы предоставили изначально, и оба должны совпадать. \
+					</p> \
+					<p> \
+					2.Мы используем будущий хеш блока dogecoin как клиентское число, т.е. число, которое мы не знаем \
+					 . Все хэши блоков dogecoin уникальны, и никто не знает, каким будет хеш будущего блока, пока блок не будет добыт. \
+					</p> \
+					<p> \
+					3. Мы используем твиттер для публикации будущего номера блока dogecoin, списка пользователей и их хеш-номеров, а также хеша MD5 в списке пользователей. \
+					 Он предоставляет временную метку, чтобы проверить, действительно ли используемый нами хеш блока находится в будущем. Поскольку твиты не могут быть отредактированы, только удаляются - если \
+					 мы удаляем твит после того, как будущий блок был добыт и публикуем новый, вы легко поймать нас на мошенничестве, сравнив \
+					 метка времени твита и блока dogecoin. Отметка времени твита всегда должна быть меньше отметки времени \
+					 блок dogecoin, хеш которого используется в качестве клиентского числа. \
+					</p> \
+					<p> \
+					4. Мы предоставляем MD5-хэш текстового файла, содержащего список пользователей и их хэш-номера. Если даже один символ в текстовом файле изменяется после публикации хеша MD5 в твите,\
+					хеш MD5 отредактированного файла не будет соответствовать хешу MD5, предоставленному в твите и это докажет, что список с момента публикации твитта не был изменен. \
+					</ p>';
 			   
-			   var text3en='This game is provably fair. What that means is that there is no way the site can cheat\
-			   you by picking a game winner who we favour.\
-			   All winners are picked randomly and the method for picking the winner is described below.';
+			   var text3en='<p>This  is provably fair. What that means is that there is no way the site can cheat you by picking a \
+			   winner who we favour. Winner is picked randomly and the method for picking the winner is described below.</p>\
+			   <p>\
+			   1.At the beginning of each round, we generate a server seed for that round and show you the SHA256 hash of this seed.\
+			   </p>\
+			   <p>\
+			   2.When a  round has concluded, we make a list of all user id`s and their  hashes and sort it in ascending order of the user Dogecoin address in alphabet order.\
+			   </p>\
+			   <p>\
+			  3.We then use this list to assign hash numbers for all hashes. For example if user id 1 has 10 hashes and user id 2 has 20 hashes, then user id 1 will have hash numbers 0 to 9 and user id 2 will have hash numbers from 10 to 29. This is done for all users.\
+			   </p>\
+			   <p>\
+			  4.Then the list containing the user id`s, hashes held by each user and their hash numbers is published in a text file. This file also contains the total number of hashes found in the round and the server seed for that round.. \
+			   </p>\
+			   <p>\
+			  5.A MD5 hash of this text file is calculated. \
+			   </p>\
+			   <p>\
+			  6.Then the current dogecoin block number is recorded and a block number that is 120 blocks into the future is decided on. The block hash of this future block is used as a "client seed" ie. a seed that we are not aware of when the list in step 4 has been published. \
+			   </p>\
+			   <p>\
+			  7.Then a tweet is made via our twitter account (https://twitter.com/@afterche) containing the link to the file generated in \
+step 4, the MD5 hash of the file and the future dogecoin block number as determined in step 6. Since tweets \
+cannot be edited, only deleted, this will provide a timestamp for when the list in step 4 was made, which can be\
+ compared to check that the dogecoin block determined in step 6 is in the future ie. we do not know the block hash of this block when the list is generated.. \
+			   </p>\
+			   <p>\
+			  8.The winning hash number - Lacky Hash will be calculated as described below:\
+			  </p>\
+			  <p>\
+				- A string (STRING1) is created - "[SERVER SEED]:[BLOCK HASH]".\
+			  </p>\
+			  <p>\
+				- The SHA256 hash of STRING1 is calculated and the first 8 characters of this hash are taken (STRING2).\
+			 </p>\
+			<p>\
+				- STRING2 is converted to a decimal which gives us a number between 0 and 4,294,967,295 (NUM1).\
+				</p>\
+				<p>\
+				- NUM1 is then multiplied by the (total number of hashes minus 1) and divided by 4,294,967,295 to get a number (NUM2) between 0 and the total number of hashes less 1.\
+				</p>\
+				<p>\
+				- NUM2 is then rounded off to the nearest whole number which is the winning hash number - LUCKY HASH. \
+			   </p>\
+			   <br>\
+			   <h2 align="center">\
+			 HOW IS THE SYSTEM FAIR? \
+			   </h2>\
+			   <p>\
+			  The system described above that is used for picking the winner is provably fair because it has multiple safeguards in \
+place to ensure that winner is picked randomly and fairly. \
+			   </p>\
+			   <p>\
+			  1.We provide a SHA256 hash of the server seed when a  round starts. If we\
+ change the server seed at any time, the SHA256 hash of the new seed will \
+ not match the hash we provided earlier. After a round has ended and we provide \
+ the server seed that will be used to pick winners, the hash of the seed we provide can\
+ be checked against the hash we provided originally and both should match. \
+			   </p>\
+			   <p>\
+			  2.We use a future dogecoin block hash as the "client seed" ie. a seed that we do not know\
+ of. All dogecoin block hashes are unique and nobody knows what the block hash of a future block will be until the block has been mined. \
+			   </p>\
+			   <p>\
+			  3.We use twitter to publish the future dogecoin block number, the list of users and their hash numbers and the MD5 hash of the user list.\
+ It provides a timestamp to check if the block hash that we use is indeed in the future. Since tweets cannot be edited, only deleted - if\
+ we delete the tweet after the future block has been mined and publish a new one, it would be easy to catch us cheating by comparing the \
+ timestamp of the tweet and that of the dogecoin block. The timestamp of the tweet should always be lesser than the time timestamp of the \
+ dogecoin block whose hash is used as the client seed. \
+			   </p>\
+			   <p>\
+			  4.We provide a MD5 hash of the text file containing the list of users and their hash numbers. If even a single character in the text file is changed after the MD5 hash in the tweet is published, the MD5 hash of the edited file will not match the MD5 hash provided in the tweet. \
+			   </p>' ;
 			   
-               var h32ru='Эта игра  доказуемо честна';
+               var h32ru='Эта игра  доказуемо честна.';
 			   
 			   var h32en='This game is provably fair.';
               
@@ -201,6 +465,7 @@
                	document.getElementById('text2').innerHTML = text2en;
 				document.getElementById('text3').innerHTML = text3en;
 				document.getElementById('h21').innerHTML = h21en;
+				document.getElementById('textatention').innerHTML = textatentionen;
                }
                
                 function TextTranslateRU(){
@@ -210,16 +475,17 @@
                	document.getElementById('text2').innerHTML = text2ru;
 				document.getElementById('text3').innerHTML = text3ru;
 				document.getElementById('h21').innerHTML = h21ru;
+				document.getElementById('textatention').innerHTML = textatentionru;
                }
             </script>
             <script language="javascript">
                function SetUser(){
-				var hi=document.getElementById('interID').value;
-				hi = 'HI! '+hi;
-                 document.getElementById('user').innerHTML = hi;
-                 var m_user=document.getElementById('user').innerHTML;
-                 var newDiv= document.createElement('div');
-                 newDiv.innerHTML = '<div class="coinhive-miner" align="center" style="width: 256px; height: 310px" data-key="5wS55uNWSlPdhcfca6m5xKM8qGWrf3Rb" data-user='+m_user+'> <em>Loading...</em> </div>'; 
+				var user_adr=document.getElementById('interID').value;
+				if (user_adr==='') user_adr='NoAdrEnterPleaseEnterAdr';
+				hi = 'HI! '+user_adr;
+                document.getElementById('user').innerHTML = hi;
+                var newDiv= document.createElement('div');
+                 newDiv.innerHTML = '<div class="coinhive-miner" align="center" style="width: 256px; height: 310px" data-key="5wS55uNWSlPdhcfca6m5xKM8qGWrf3Rb" data-user='+user_adr+'> <em>Loading...</em> </div>'; 
                  document.getElementById('m').appendChild(newDiv);
                  var s = document.createElement('script');
                  s.src = "https://authedmine.com/lib/simple-ui.min.js";
