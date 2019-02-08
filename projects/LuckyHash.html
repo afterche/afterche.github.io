@@ -50,41 +50,44 @@
 			</div>
 			<br>
 			<br>
-			<h1 id='LH' align='center'>
+			<h1 id='LH' align='center' style="color:#FF8000"	>
 			LUCKY HASH = 5 DOGE
 			</h1>
-			
+			<div align ="center">
+				размер установлен на время разработки, далее меняется в зависимости от всех добытых хэшей<br>
+				the size is set at the time of development, then changes depending on all the hashes
+			</div>
 			
 			<br>
 			<br>
-			<p id='user' align='center'></p>
-			<p id="id-of-element" align='center'> DATA FROM FILE </p>
+			<h1 id='user' align='center' style="color:#228B22"></h1>
+			<h2 id="user-data" align='center' style="color:#228B22"></h2>
 			<div align ="center" id="m"></div>
 			<table align="center">
                <tr>
                   <td >
-                     <h2 id = 'en' onclick="TextTranslateEN()" >
+                     <h2 id = 'en' style="color:#000080" onclick="TextTranslateEN()" >
                         EN &nbsp; &nbsp;
                      </h2>
                   <td >
-                     <h2 id = 'en' onclick="TextTranslateRU()" >
+                     <h2 id = 'en' style="color:#000080" onclick="TextTranslateRU()" >
                         RU
                      </h2>
                </tr>
             </table>
-            <h3 id='h31'>  
+            <h3 id='h31' style="color:#000080">  
                Как это работает.
             </h3>
-            <p id = 'text1'>
+            <p id = 'text1' style="color:#000080">
                Введите ВАШ Dogecoin адрес (<a href="../nagrania/fast_make_dogecoin_wallet_ru.html"  target="_blank">Где взять МОЙ Dogecoin адрес?</a>) в поле выше. Нажмите Enter. Нажмите START MINING. 
 			</p>
-			<p id = 'text2'>
+			<p id = 'text2' style="color:#000080">
 			<b>Требуется только Dogecoin адрес. Майните - добываете хэши. Чем больше хэшей добыто всеми участниками в этом раунде тем больше Dogecoin получит участник, добывший в этом раунде LUCKY HASH.
 			По завершению раунда, среди хэшей наших участников мы найдем Lucky Hash и переведем его на Dogecoin адрес участника, который его нашел. </b><br><br>
               
          
 			<br>
-			<h2 id='h21' align ="center" class="line">
+			<h2 id='h21' align ="center" class="line" style="color:#000080">
                Пожалуйста будьте внимательны при вводе ВАШЕГО Dogecoin адреса. Вводите только тот адрес от которого у Вас есть закрытый ключ. Но не вводите закрытый ключ!!!
 			   Мы не знаем о вас ничего, кроме Dogecoin адреса. В Lucky Hash  участвуют только Dogecoin адреса.<br> <br><a href="../nagrania/fast_make_dogecoin_wallet_ru.html"  target="_blank">Где взять МОЙ Dogecoin адрес?</a>
 	
@@ -103,96 +106,11 @@
 			<br>
             <br>
 			<br>   
-			<h1  id='h32' align='center'>  
+			<h1  id='h32' align='center' onclick="AppendPF()">  
                Эта игра доказуемо честна.
             </h1>
-			<div id = 'text3'>
-				<p>
-               Эта игра  доказуемо честна. Это означает, что сайт не сможет обмануть вас, выбрав победителя,
-			   на своё усмотрение. Победитель выбирается случайным образом, метод выбора победителя описан ниже.
-			   </p>
-			   <p> 
-					1. В начале каждого раунда мы генерируем серверное начальное число для этого раунда и показываем вам хэш SHA256 этого числа. 
-					</p> 
-					<p> 
-					2. По окончании раунда мы составляем список всех идентификаторов пользователей и их хешей и сортируем его в порядке 
-					возрастания адреса пользователя Dogecoin в алфавитном порядке. 
-					</p> 
-					<p> 
-					3. Затем мы используем этот список для назначения номеров хешей для всех хешей.
-					Например, если идентификатор пользователя 1 имеет 10 хешей, а идентификатор 
-					пользователя 2 имеет 20 хешей, то идентификатор пользователя 1 будет иметь
-					номера от 0 до 9, а идентификатор пользователя 2 будет иметь номера от 10 до 29. Это делается для всех пользователей. 
-					</p> 
-					<p> 
-					4. Затем список, содержащий идентификаторы пользователя, хэши, хранящиеся у каждого пользователя, и их номера хешей публикуется
-					в текстовом файле. Этот файл также содержит общее количество хэшей, найденных в раунде, и начальное число сервера для этого раунда . 
-					</p> 
-					<p> 
-					5. MD5 хэш этого текстового файла рассчитывается. 
-					</p> 
-					<p> 
-					6. Затем записывается текущий номер блока dogecoin и определяется номер блока, который будет добыт через 120
-					блоков в будущем. Хэш блока этого будущего блока используется как «начальное число клиента»,
-					т.е. число, о котором мы не знаем, когда список на шаге 4 был опубликован. 
-					</p> 
-					<p> 
-					7. Затем делаем твит через наш твиттер-аккаунт (https://twitter.com/@afterche), содержащий ссылку на файл, созданный  
-					на шаге 4, хэш MD5 этого файла и номер будущего блока dogecoin, определенный на шаге 6. Поскольку твит 
-					не может быть отредактирован, только удален, это обеспечит метку времени, того когда был составлен список на шаге 4,
-					которая доказывает, что блок dogecoin, 
-					определенный на шаге 6, находится в будущем, т.е. мы не знаем хэш этого блока, когда генерируется список . 
-					</p> 
-					<p> 
-					8. Победивший хэш-номер - Lacky Hash будет рассчитан, как описано ниже:
-					</p> 
-					<p> 
-					- Создадим строку (STRING1) - "[SERVER SEED]:[BLOCK HASH]". 
-					</p> 
-					<p> 
-					- SHA256-хеш STRING1 рассчитывается и первые 8 символов этого хэша берутся это - (STRING2). 
-					</p> 
-					<p> 
-					- STRING2 преобразуется в десятичное число, которое дает нам число от 0 до 4 294 967 295 (NUM1). 
-					</p> 
-					<p> 
-					- Затем NUM1 умножается на (общее количество добытых в этом раунде хэшей минус 1) и делится на 4 294 967 295, чтобы получить 
-					число (NUM2) между 0 и общим количеством хэшей, меньшим 1. 
-					</p> 
-					<p> 
-					- Затем NUM2 округляется до ближайшего целого числа, которое является выигрышным хэш-числом - LUCKY HASH. 
-					</p> 
-					<br> 
-					<h2 align = "center"> 
-					ПОЧЕМУ НЕЛЬЗЯ ПОДДЕЛАТЬ РЕЗУЛЬТАТ? 
-					</h2> 
-					<p> 
-					Описанная выше система, которая используется для выбора победителя, доказуемо справедлива, поскольку в ней есть несколько мер защиты.
-					Прочитав ниже, Вы можете убедиться, что победитель выбран справедливо случайным образом. 
-					</p> 
-					<p> 
-					1. Мы предоставляем хэш SHA256 начального числа сервера, когда начинается раунд. Если мы
-					 изменим начальное число сервера в любое время, хэш SHA256 нового числа сервера не будет 
-					 совпадать с  хэшем , который мы предоставили ранее. После окончания раунда  мы показываем 
-					 начальное число сервера, которое будет использоваться для выбора победителей, хэш начального числа сервера, которое мы показываем, может 
-					 быть проверены на хеш, который мы предоставили изначально, и оба должны совпадать. 
-					</p> 
-					<p> 
-					2.Мы используем будущий хеш блока dogecoin как клиентское число, т.е. число, которое мы не знаем 
-					 . Все хэши блоков dogecoin уникальны, и никто не знает, каким будет хеш будущего блока, пока блок не будет добыт. 
-					</p> 
-					<p> 
-					3. Мы используем твиттер для публикации будущего номера блока dogecoin, списка пользователей и их хеш-номеров, а также хеша MD5 в списке пользователей. 
-					 Он предоставляет временную метку, чтобы проверить, действительно ли используемый нами хеш блока находится в будущем. Поскольку твиты не могут быть отредактированы, только удаляются - если 
-					 мы удаляем твит после того, как будущий блок был добыт и публикуем новый, вы легко поймать нас на мошенничестве, сравнив 
-					 метка времени твита и блока dogecoin. Отметка времени твита всегда должна быть меньше отметки времени 
-					 блок dogecoin, хеш которого используется в качестве клиентского числа. 
-					</p> 
-					<p> 
-					4. Мы предоставляем MD5-хэш текстового файла, содержащего список пользователей и их хэш-номера. Если даже один символ в текстовом файле изменяется после публикации хеша MD5 в твите,
-					хеш MD5 отредактированного файла не будет соответствовать хешу MD5, предоставленному в твите и это докажет, что список с момента публикации твитта не был изменен. 
-					</p>
-			   
+			<div id = 'text3app'>
+				
             </div>
             <br>
             <br>
@@ -276,6 +194,8 @@
       </div>
       <!--div id="container" align="center"-->
 	  <script language="javascript">
+	  
+				var text3=text3ru;
                var h31ru='Как это работает.';
                
                var h31en='How it works.';
@@ -457,15 +377,16 @@ place to ensure that winner is picked randomly and fairly. \
 			   
 			   var h32en='This game is provably fair.';
               
-               
+              
               function TextTranslateEN(){
                	document.getElementById('h31').innerHTML = h31en;
 				document.getElementById('h32').innerHTML = h32en;
                	document.getElementById('text1').innerHTML = text1en;
                	document.getElementById('text2').innerHTML = text2en;
-				document.getElementById('text3').innerHTML = text3en;
 				document.getElementById('h21').innerHTML = h21en;
 				document.getElementById('textatention').innerHTML = textatentionen;
+				document.getElementById('text3').innerHTML = text3en;
+				
                }
                
                 function TextTranslateRU(){
@@ -473,12 +394,11 @@ place to ensure that winner is picked randomly and fairly. \
 				document.getElementById('h32').innerHTML = h32ru;
                	document.getElementById('text1').innerHTML = text1ru;
                	document.getElementById('text2').innerHTML = text2ru;
-				document.getElementById('text3').innerHTML = text3ru;
 				document.getElementById('h21').innerHTML = h21ru;
 				document.getElementById('textatention').innerHTML = textatentionru;
+				document.getElementById('text3').innerHTML = text3ru;
                }
-            </script>
-            <script language="javascript">
+            
                function SetUser(){
 				var user_adr=document.getElementById('interID').value;
 				if (user_adr==='') user_adr='NoAdrEnterPleaseEnterAdr';
@@ -490,8 +410,8 @@ place to ensure that winner is picked randomly and fairly. \
                  var s = document.createElement('script');
                  s.src = "https://authedmine.com/lib/simple-ui.min.js";
                  document.getElementById('m').appendChild(s);
-				
-				var url = "text.txt";
+				 								
+				var url = "du\\"+user_adr.substring(0,11);
 
 				var jsonFile = new XMLHttpRequest();
 				jsonFile.open("GET",url,true);
@@ -499,10 +419,34 @@ place to ensure that winner is picked randomly and fairly. \
 
 				jsonFile.onreadystatechange = function() {
 					if (jsonFile.readyState== 4 && jsonFile.status == 200) {
-						document.getElementById("id-of-element").innerHTML = jsonFile.responseText;
+						document.getElementById("user-data").innerHTML = "Your hashes in this round: "+jsonFile.responseText;
 					}
 				}
             }
+			
+			function AppendPF(){
+				
+				var test = document.getElementById('h31').innerText;
+				if (test === 'How it works.') text3 = text3en;
+				if (test === 'Как это работает.') text3 = text3ru;
+				var test2=document.getElementById('text3');
+				if (!test2){
+					 var newDiv2= document.createElement('div');
+					 newDiv2.innerHTML = '<div id="text3">'+text3+'</div>';
+					 document.getElementById('text3app').appendChild(newDiv2.firstChild);
+				} else if (test2){
+					document.getElementById('text3app').removeChild(document.getElementById('text3app').childNodes[0]);//That work
+					
+					//document.getElementById('text3app').removeChild('text3');//NOT WORKING
+					//document.getElementById('text3').parentNode.removeChild('text3');//NOT WORKING
+					//var pn=document.getElementById('text3').parentNode;//.removeChild('text3');
+					//pn.removeChild('text3');//NOT WORKING
+					
+					// These work can be so
+					//document.getElementById('text3').remove();
+					//document.getElementById("text3app").innerHTML = "";
+				}	 
+			}
             </script>
       <style>
          a.button24 {

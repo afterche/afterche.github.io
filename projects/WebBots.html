@@ -23,8 +23,8 @@
 	   }
 	</style> 
 
-	<meta name="keywords" content="WebBots - PhantomJS, SlimerJS, Puppeteer. Parsing, scraping to html. Парсим в HTML">
- <meta name="description" content="WebBots - PhantomJS, SlimerJS, Puppeteer.Parsing, scraping to html. Парсим в HTML">
+	<meta name="keywords" content="WebBots - PhantomJS, SlimerJS, Puppeteer. Parsing, scraping to html. Парсим в HTML.Automate the Web.">
+ <meta name="description" content="WebBots - PhantomJS, SlimerJS, Puppeteer.Parsing, scraping to html. Парсим в HTML.Automate the Web.">
 	
 	<title>WebBots - PhantomJS, SlimerJS, Puppeteer.Parsing, scraping to html. Парсим в HTML</title>
 
@@ -67,8 +67,89 @@
 	<br>
 
 	<div id="content">
-	<h1>WebBots:</h1>
+	<h1>WebBots. Automate the Web.</h1>
 	<br>
+	
+	<table align="center">
+               <tr>
+                  <td >
+                     <h2 id = 'en' style="color:#000080" onclick="TextTranslateEN()" >
+                        EN &nbsp; &nbsp;
+                     </h2>
+                  <td >
+                     <h2 id = 'en' style="color:#000080" onclick="TextTranslateRU()" >
+                        RU
+                     </h2>
+               </tr>
+            </table>
+	
+	
+	<div id='text1'> 
+		<p>An internet bot, also known as web robot, WWW robot or simply bot, is a software application that runs automated 
+		tasks (scripts) over the Internet.[1] Typically, bots perform tasks that are both simple and structurally repetitive, 
+		at a much higher rate than would be possible for a human alone. The largest use of bots is in web spidering (web crawler), 
+		in which an automated script fetches, analyzes and files information from web servers at many times the speed of a human.
+		</p>
+		
+		<p>Social networking bots are sets of algorithms that take on the duties of repetitive sets of instructions in order 
+		to establish a service or connection among social networking users. Various designs of networking bots vary from chat
+		bots, algorithms designed to converse with a human user, to social bots, 
+		algorithms designed to mimic human behaviors to converse with behavioral patterns similar to that of a human user. 
+		</p>
+	</div> 
+	
+	
+	
+	<script language="javascript">
+	var text1ru='<p>Интернет бот , также известный как веб - робот , WWW робот или просто боты , это программное приложение (скрипт) , \
+	которое выполняет автоматизированные задачи (сценарии) в Интернете .  Как правило, боты выполняют простые и \
+	структурно повторяющиеся задачи с гораздо более высокой скоростью, чем это было бы возможно для одного человека. Самое большое использование \
+	ботов - это веб-паук ( веб-сканер ), в котором автоматизированный скрипт извлекает, анализирует\
+	и сохраняет информацию с веб-серверов во много раз быстрее, чем человек.\
+	</p>\
+	<p>Боты социальных сетей - это наборы алгоритмов, которые выполняют обязанности повторяющихся наборов инструкций для установления \
+	взаимодействия или связи между пользователями социальных сетей. Различные конструкции сетевых ботов варьируются от чат-ботов , алгоритмов,\
+	предназначенных для общения с пользователем-человеком, до социальных ботов, алгоритмов,\
+	предназначенных для имитации поведения человека, чтобы общаться с поведенческими паттернами, подобными поведению человека-пользователя.\
+	</p>';
+	
+	
+	
+	var text1eng='<p>An internet bot, also known as web robot, WWW robot or simply bot, is a software application that runs automated \
+		tasks (scripts) over the Internet.[1] Typically, bots perform tasks that are both simple and structurally repetitive, \
+		at a much higher rate than would be possible for a human alone. The largest use of bots is in web spidering (web crawler), \
+		in which an automated script fetches, analyzes and files information from web servers at many times the speed of a human.\
+		</p>\
+		<p>Social networking bots are sets of algorithms that take on the duties of repetitive sets of instructions in order \
+		to establish a service or connection among social networking users. Various designs of networking bots vary from chat\
+		bots, algorithms designed to converse with a human user, to social bots,algorithms designed to mimic human behaviors to converse with behavioral patterns similar\
+		to that of a human user.</p>';
+	
+	
+    function TextTranslateEN(){
+		document.getElementById('text1').innerHTML = text1eng;
+		
+	}
+	
+	 function TextTranslateRU(){
+		document.getElementById('text1').innerHTML = text1ru;
+		
+	}
+</script>
+	
+	
+	<div align="right">
+		A source:<br>
+		<a href="
+			https://en.wikipedia.org/wiki/Internet_bot" target="_blank">wikipedia</a><br>
+			
+	</div>
+	<br>
+	<br>
+	<h2>
+	Examples of our bots (Примеры наших ботов):
+	</h2>
+	
 	
 	<p>
 		<a href="../projects/js/Parser.js" target="_blank">PhantomJS.Parsing, scraping to html. Парсим в HTML.</a>
