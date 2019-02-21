@@ -45,8 +45,9 @@
                <a href="#" class="button24" OnClick="SetUser()">Enter</a>
             </div>
 			<div align ="center">
-				разрабатывается, но уже можно пробовать<br>
-				being developed, but you can already try
+				<h2>
+					<a href="../nagrania/fast_make_dogecoin_wallet_en.html"  target="_blank">Where can I get my Dogecoin address?</a>
+				</h2>
 			</div>
 			<br>
 			<br>
@@ -75,7 +76,9 @@
                      </h2>
                </tr>
             </table>
-            <h3 id='h31' style="color:#000080">  
+           <div id='d'></div>
+
+		   <h3 id='h31' style="color:#000080">  
                Как это работает.
             </h3>
             <p id = 'text1' style="color:#000080">
@@ -401,27 +404,44 @@ place to ensure that winner is picked randomly and fairly. \
             
                function SetUser(){
 				var user_adr=document.getElementById('interID').value;
-				if (user_adr==='') user_adr='NoAdrEnterPleaseEnterAdr';
-				hi = 'HI! '+user_adr;
-                document.getElementById('user').innerHTML = hi;
-                var newDiv= document.createElement('div');
-                 newDiv.innerHTML = '<div class="coinhive-miner" align="center" style="width: 256px; height: 310px" data-key="5wS55uNWSlPdhcfca6m5xKM8qGWrf3Rb" data-user='+user_adr+'> <em>Loading...</em> </div>'; 
-                 document.getElementById('m').appendChild(newDiv);
-                 var s = document.createElement('script');
-                 s.src = "https://authedmine.com/lib/simple-ui.min.js";
-                 document.getElementById('m').appendChild(s);
-				 								
-				var url = "du\\"+user_adr.substring(0,11);
-
-				var jsonFile = new XMLHttpRequest();
-				jsonFile.open("GET",url,true);
-				jsonFile.send();
-
-				jsonFile.onreadystatechange = function() {
-					if (jsonFile.readyState== 4 && jsonFile.status == 200) {
-						document.getElementById("user-data").innerHTML = "Your hashes in this round: "+jsonFile.responseText;
+				
+				var valid = WAValidator.validate(user_adr, 'DOGE');
+				console.log(valid);
+				
+				if (valid){ 
+					hi = 'HI! '+user_adr;
+					document.getElementById('user').innerHTML = hi;
+					var newDiv= document.createElement('div');
+					 newDiv.innerHTML = '<div class="coinhive-miner" align="center" style="width: 256px; height: 310px" data-key="5wS55uNWSlPdhcfca6m5xKM8qGWrf3Rb" data-user='+user_adr+'> <em>Loading...</em> </div>'; 
+					 document.getElementById('m').appendChild(newDiv);
+					 var s = document.createElement('script');
+					 s.src = "https://authedmine.com/lib/simple-ui.min.js";
+					 document.getElementById('m').appendChild(s);
+													
+					// Getting user data 
+					var url = "du\\"+user_adr.substring(0,11);
+					var jsonFile = new XMLHttpRequest();
+					jsonFile.open("GET",url,true);
+					jsonFile.send();
+					jsonFile.onreadystatechange = function() {
+						if (jsonFile.readyState== 4 && jsonFile.status == 200) {
+							document.getElementById("user-data").innerHTML = "Your hashes in this round: "+jsonFile.responseText;
+						}
 					}
-				}
+				} else if (!valid){
+					if (user_adr==='1L4GKRYtPv2nNpTz8GJPaAEGuw81bsRWbQ'){
+						alert('Hello 1L4GKRYtPv2nNpTz8GJPaAEGuw81bsRWbQ! Please provide us with your correct Dogecoin address. Since you are our most active tester, we will list you 5 Doge. Write to us in the mail in a letter and indicate your Dogecoin address. Good luck! afterche@bk.ru.');
+					} else 	{
+						var test = document.getElementById('h31').innerText;
+						if (test === 'How it works.') {
+							alert('Please enter your correct Dogecoin address.');
+						}
+						if (test === 'Как это работает.') {
+							alert('Пожалуйста введите  ВАШ верный Dogecoin адрес.' );
+							
+						}
+					}
+				}	
             }
 			
 			function AppendPF(){
@@ -435,20 +455,21 @@ place to ensure that winner is picked randomly and fairly. \
 					 newDiv2.innerHTML = '<div id="text3">'+text3+'</div>';
 					 document.getElementById('text3app').appendChild(newDiv2.firstChild);
 				} else if (test2){
-					document.getElementById('text3app').removeChild(document.getElementById('text3app').childNodes[0]);//That work
-					
-					//document.getElementById('text3app').removeChild('text3');//NOT WORKING
-					//document.getElementById('text3').parentNode.removeChild('text3');//NOT WORKING
-					//var pn=document.getElementById('text3').parentNode;//.removeChild('text3');
-					//pn.removeChild('text3');//NOT WORKING
-					
+					//document.getElementById('text3app').removeChild(document.getElementById('text3app').childNodes[0]);//That work
+					//document.getElementById('text3app').removeChild(document.getElementById('text3'));
+					//document.getElementById('text3').parentNode.removeChild(document.getElementById('text3'));
+					var pn=document.getElementById('text3').parentNode;//.removeChild('text3');
+					pn.removeChild(document.getElementById('text3'));
 					// These work can be so
 					//document.getElementById('text3').remove();
 					//document.getElementById("text3app").innerHTML = "";
 				}	 
 			}
             </script>
-      <style>
+			
+			<script src="../projects/js/wallet-address-validator.min.js"></script>
+	
+	<style>
          a.button24 {
          display: inline-block;
          color: white;
