@@ -72,16 +72,37 @@
 	
 	<p>
 		text to dogecoin adress coder<br>
-	text afterchetothemoon<br>
-hex(не более 40 символов) 6166746572636865746f7468656d6f6f6e000000 <br>
-prefix + hex 1e6166746572636865746f7468656d6f6f6e000000 <br>
+text = afterchetothemoon (не более 40 символов?)<br>
+prefix = 1e (dogecoin)	<br>	
+hex(text) 6166746572636865746f7468656d6f6f6e000000 <br>
+prefix + hex = 1e6166746572636865746f7468656d6f6f6e000000 <br>
 sha256(sha256(prefix + hex)) 3d3bced6d45c5e063d547e0d740e01b5cb325fa45ee12359f79273a86473a597<br>
-4bytes of sha256(sha256(prefix + hex)) 3d3bced6<br>
+4bytes (8 first symbol) of sha256(sha256(prefix + hex)) = 3d3bced6<br>
 prefix + hex+4bytes 1e6166746572636865746f7468656d6f6f6e0000003d3bced6<br>
 DE26pYMk9wc8DoAMeg5BK6LWqUuAYT4o3s<br>
 https://appdevtools.com/base58-encoder-decoder ---> base58 to text<br>
 
 https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses#How_to_create_Bitcoin_Address
+wallet-address-validator<br>
+
+
+		
+6166746572636865746f7468656d6f6f6e000000
+afterche signumeum
+7cf4cef541b188db3bad3824096a178af2dad87c77ab88d25a6ec84d48841eff
+7cf4cef541b188db3bad3824096a178af2dad87c77ab88d25a6ec84d48841eff
+
+1half = 7cf4cef541b188db3bad3824096a178a
+1half + 00000000 = 7cf4cef541b188db3bad3824096a178a00000000
+3763663463656635343162313838646233626164333832343039366131373861
+2half = f2dad87c77ab88d25a6ec84d48841eff 
+2half + 00000000 = f2dad87c77ab88d25a6ec84d48841eff00000000
+
+
+prefix + 1half = 1e7cf4cef541b188db3bad3824096a178a00000000 <br>
+sha256(sha256(prefix + hex))  = 217fac882081b34d36a2c7e44a5c373ad93c65dbac734a07de0a4208a677f83e<br>
+e38a7df0af2cfbbb31e2b47ad13e23ec4d82f78c433d7607dcec856173565239
+4bytes (8 first symbol) of sha256(sha256(prefix + hex)) = 217fac88<br>
 	
 	sha256 to dogecoin adress coder <br>
 		text or file or  что то input <br>
