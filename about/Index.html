@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Основные SEO-теги -->
+    <title>Автоматизация бизнес-процессов | Разработка парсеров | Веб-разработка</title>
+    <meta name="description" content="Создание парсеров, автоматизация рутины, SEO оптимизация сайтов. Node.js, Puppeteer, Python. Экономлю 20+ часов работы в неделю.">
+    <meta name="keywords" content="парсинг данных, автоматизация, Node.js, Puppeteer, Python, веб-разработка, SEO, сбор данных, скрипты, криптовалюта">
+    <meta name="author" content="AfterChe">
+    
+    <!-- Open Graph для соцсетей -->
+    <meta property="og:title" content="Автоматизация бизнес-процессов | AfterChe">
+    <meta property="og:description" content="Разработка парсеров и автоматизация рутинных задач. Создаю решения, которые экономят время и деньги.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://afterche.github.io/">
+    <meta property="og:image" content="https://afterche.github.io/images/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Автоматизация бизнес-процессов | AfterChe">
+    <meta name="twitter:description" content="Создание парсеров и систем автоматизации на Node.js и Python">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Каноническая ссылка -->
+    <link rel="canonical" href="https://afterche.github.io/">
+    
+    <!-- JSON-LD структурированные данные (важно для SEO!) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "AfterChe",
+        "url": "https://afterche.github.io/",
+        "jobTitle": "Разработчик парсеров и систем автоматизации",
+        "description": "Специалист по созданию парсеров данных, автоматизации бизнес-процессов и веб-разработке",
+        "skills": "Node.js, Puppeteer, Python, JavaScript, React, Vue.js, SEO, Базы данных",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "availableLanguage": "Russian",
+            "email": "afterche@bk.ru"
+        },
+        "sameAs": [
+            "https://github.com/afterche"
+        ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1e88e5;
+            --primary-dark: #1565c0;
+            --primary-light: #90caf9;
+            --secondary: #f5f9ff;
+            --accent: #00acc1;
+            --text: #263238;
+            --light-text: #607d8b;
+            --white: #ffffff;
+            --shadow: rgba(30, 136, 229, 0.15);
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f9ff 0%, #e3f2fd 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка */
+        header {
+            background: var(--white);
+            box-shadow: 0 4px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        /* Обновленный стиль для логотипа с фото */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+            box-shadow: 0 3px 10px rgba(30, 136, 229, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo i {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 136, 229, 0.4);
+        }
+        
+        /* Герой-секция */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #bbdefb 0%, #e3f2fd 100%);
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--text);
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--primary);
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--light-text);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Секции */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Экспертиза */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .expertise-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid var(--primary-light);
+        }
+        
+        .expertise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(30, 136, 229, 0.2);
+        }
+        
+        .expertise-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .expertise-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        /* Технологии */
+        .tech-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .tech-item {
+            background: var(--white);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--text);
+            transition: transform 0.3s;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tech-item i {
+            color: var(--primary);
+        }
+        
+        /* Проекты */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-header {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 20px;
+        }
+        
+        .project-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .code-block {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            border-radius: 0 5px 5px 0;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .project-tech span {
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        /* Как работаю */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .process-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            top: 30px;
+            font-size: 1.5rem;
+            color: var(--primary-light);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        /* Призыв к действию */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 30px;
+            margin: 60px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Футер */
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-light);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links a {
+            color: #b0bec5;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b0bec5;
+            font-size: 0.9rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .process-step:not(:last-child)::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -40px;
+                transform: translateX(50%);
+            }
+            
+            .process-step {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+	
+	
+    <!-- Шапка -->
+      <!-- Шапка -->
+    <header>
+        <div class="container nav-container">
+            <!-- Логотип с фото -->
+            <a href="#" class="logo">
+                <div class="logo-img">
+                    <img src="./photo.jpg" 
+                         alt="AfterChe - разработчик парсеров" 
+                         onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyMi41IiBjeT0iMjIuNSIgcj0iMjIuNSIgZmlsbD0iIzFlODhlNSIvPjxwYXRoIGQ9Ik0xNSAyMGMwLTIuOCAyLjItNSA1LTVzNSAyLjIgNSA1LTIuMiA1LTUgNS01LTIuMi01LTV6IiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik0yNSAzMGwtNS01IDUtNXoiIGZpbGw9IndoaXRlIi8+PC9zdmc+'">
+                </div>
+                <span class="logo-text">AfterChe</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="#expertise">Экспертиза</a>
+                <a href="#projects">Проекты</a>
+                <a href="#tech">Технологии</a>
+                <a href="#process">Как работаю</a>
+                <a href="#contact">Контакты</a>
+            </div>
+            <a href="#contact" class="cta-button">
+                <i class="fas fa-paper-plane"></i> Обсудить проект
+            </a>
+        </div>
+    </header>
+
+
+
+
+
+
+    <!-- Герой -->
+    <section class="hero">
+        <div class="container">
+            <h1>Автоматизирую рутину. <span>Экономлю время и деньги</span></h1>
+            <p>Создаю интеллектуальные парсеры, системы сбора данных и автоматизации бизнес-процессов. Заменяю ручной труд эффективными программами, которые работают 24/7.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="cta-button">
+                    <i class="fas fa-code"></i> Примеры кода
+                </a>
+                <a href="#contact" class="cta-button" style="background: linear-gradient(45deg, #00acc1, #1e88e5);">
+                    <i class="fab fa-telegram"></i> Написать в Telegram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Экспертиза -->
+    <section id="expertise">
+        <div class="container">
+            <div class="section-title">
+                <h2>Моя экспертиза</h2>
+                <p>Решаю ключевые бизнес-задачи с помощью технологий</p>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-cloud-download-alt"></i>
+                    </div>
+                    <h3>Парсинг и сбор данных</h3>
+                    <p>Создаю роботов, которые автоматически собирают информацию с сайтов: цены, товары, контакты, отзывы. Данные структурируются в удобные таблицы или базы данных.</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>SEO и оптимизация сайтов</h3>
+                    <p>Повышаю видимость сайтов в поисковых системах. Ускоряю загрузку, исправляю ошибки, настраиваю аналитику для привлечения целевого трафика.</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Системная интеграция</h3>
+                    <p>Настраиваю взаимодействие между системами: сайты, CRM, 1С, платежные шлюзы. Автоматизирую отчетность и бизнес-процессы.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Технологии -->
+    <section id="tech" style="background-color: var(--secondary);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Технологический стек</h2>
+                <p>Инструменты, которые я использую для решения задач</p>
+            </div>
+            <div class="tech-container">
+                <div class="tech-item"><i class="fab fa-node-js"></i> Node.js</div>
+                <div class="tech-item"><i class="fas fa-spider"></i> Puppeteer</div>
+                <div class="tech-item"><i class="fab fa-python"></i> Python</div>
+                <div class="tech-item"><i class="fab fa-js"></i> JavaScript</div>
+				<div class="tech-item"><i class="fab fa-server"></i> 1C</div>
+                <div class="tech-item"><i class="fab fa-react"></i> React</div>
+                <div class="tech-item"><i class="fab fa-vuejs"></i> Vue.js</div>
+                <div class="tech-item"><i class="fab fa-wordpress"></i> WordPress</div>
+                <div class="tech-item"><i class="fas fa-database"></i> Базы данных</div>
+                <div class="tech-item"><i class="fas fa-brain"></i> ИИ интеграции</div>
+                <div class="tech-item"><i class="fas fa-server"></i> Системное администрирование</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Проекты -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Примеры реализованных проектов</h2>
+                <p>Конкретные решения с кодом и результатами</p>
+            </div>
+            <div class="project-grid">
+                <!-- Проект 1: Парсер балансов -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="fas fa-coins"></i> Парсер балансов Dogecoin</h3>
+                        <p>Автоматическая проверка тысяч крипто-кошельков</p>
+                    </div>
+                    <div class="project-content">
+                        <p><strong>Задача:</strong> Ежедневно проверять балансы тысяч адресов Dogecoin на нескольких блокчейн-эксплорерах.</p>
+                        <p><strong>Решение:</strong> Устойчивый парсер с ротацией источников и обработкой ошибок.</p>
+                        <div class="code-block">
+// Часть кода парсера<br/>
+const sites = [{<br/>
+&nbsp;&nbsp;name: "SoChain DOGE",<br/>
+&nbsp;&nbsp;url: addr => `https://sochain.com/address/DOGE/${addr}`,<br/>
+&nbsp;&nbsp;getBalance: async (page) => {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;await page.waitForSelector('.px-2');<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;// Извлечение баланса...<br/>
+&nbsp;&nbsp;}<br/>
+}];
+                        </div>
+                        <p><strong>Результат:</strong> Замена 20+ часов ручной работы в неделю на полностью автоматизированный процесс.</p>
+                        <div class="project-tech">
+                            <span>Node.js</span>
+                            <span>Puppeteer</span>
+                            <span>Stealth-плагины</span>
+                            <span>Обработка ошибок</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Проект 2: Автоматизация заливки -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="fas fa-music"></i> Автоматизация медиа-контента</h3>
+                        <p>Система управления аудиофайлами для сайта</p>
+                    </div>
+                    <div class="project-content">
+                        <p><strong>Задача:</strong> Автоматически заполнять пустые каталоги аудиофайлами с учетом ограничений по размеру и количеству.</p>
+                        <p><strong>Решение:</strong> Умный скрипт распределения файлов с уникальным подбором для каждого каталога.</p>
+                        <div class="code-block">
+// Автоматическое распределение аудиофайлов<br/>
+function selectUniqueFilesFor71MB(audios) {<br/>
+&nbsp;&nbsp;const MIN_FILES = 25;<br/>
+&nbsp;&nbsp;const MAX_FILES = 33;<br/>
+&nbsp;&nbsp;const shuffled = shuffleArray([...audios]);<br/>
+&nbsp;&nbsp;// Рандомный подбор 25-33 файлов...<br/>
+}
+                        </div>
+                        <p><strong>Результат:</strong> Полная автоматизация процесса наполнения сайта контентом, экономия 15+ часов в неделю.</p>
+                        <div class="project-tech">
+                            <span>Node.js</span>
+                            <span>FS модуль</span>
+                            <span>Алгоритмы</span>
+                            <span>Автоматизация</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Проект 3: Генерация метаданных -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3><i class="fas fa-tags"></i> Генератор тегов и жанров</h3>
+                        <p>Автоматическое обновление метаданных для контента</p>
+                    </div>
+                    <div class="project-content">
+                        <p><strong>Задача:</strong> Динамически обновлять теги и жанры для медиафайлов на основе доступной базы.</p>
+                        <p><strong>Решение:</strong> Система случайного, но уникального подбора тегов из JSON-базы данных.</p>
+                        <div class="code-block">
+// Генерация случайных тегов и жанров<br/>
+const randomTags = getRandomItems(uniqueData.tags, 4, 9);<br/>
+const randomGenres = getRandomItems(uniqueData.genres, 6, 9);<br/>
+snFileData.tags = `[translate:${randomTags.join(', ')}]`;
+                        </div>
+                        <p><strong>Результат:</strong> Уникализация контента, улучшение SEO, полная автоматизация процесса тегирования.</p>
+                        <div class="project-tech">
+                            <span>JSON</span>
+                            <span>Алгоритмы</span>
+                            <span>Автоматизация</span>
+                            <span>Метаданные</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как работаю -->
+    <section id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Как я работаю</h2>
+                <p>Четкий процесс от обсуждения до результата</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Обсуждение</h3>
+                    <p>Анализируем задачу, определяем цели и технические требования</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Прототип</h3>
+                    <p>Создаю рабочую версию для демонстрации логики работы</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Разработка</h3>
+                    <p>Пишу чистый, документированный код с обработкой ошибок</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Тестирование</h3>
+                    <p>Проверяю работу в разных условиях, устраняю баги</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>Поддержка</h3>
+                    <p>Гарантирую работоспособность, вношу правки при необходимости</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Призыв к действию -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Готов автоматизировать вашу рутину?</h2>
+            <p>Обсудим, как я могу помочь сэкономить время и оптимизировать процессы в вашем бизнесе. Отправьте описание задачи, и я предложу решение.</p>
+            <a href="https://t.me/pigrowant" class="cta-button" style="background: white; color: var(--primary); font-size: 1.1rem;">
+                <i class="fab fa-telegram"></i> Написать в Telegram @pigrowant
+            </a>
+            <p style="margin-top: 20px; opacity: 0.8;">
+                Или на email: <a href="mailto:afterche@bk.ru" style="color: white; text-decoration: underline;">afterche@bk.ru</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-robot"></i> AfterChe
+                    </a>
+                    <p>Создаю интеллектуальные решения для автоматизации бизнеса. Специализация: парсинг данных, веб-разработка, SEO, системная интеграция.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/afterche" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://t.me/pigrowant" title="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="mailto:afterche@bk.ru" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Навигация</h4>
+                    <a href="#expertise">Экспертиза</a>
+                    <a href="#projects">Проекты</a>
+                    <a href="#tech">Технологии</a>
+                    <a href="#process">Как работаю</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Услуги</h4>
+                    <a href="#">Парсинг данных</a>
+                    <a href="#">Автоматизация</a>
+                    <a href="#">SEO оптимизация</a>
+                    <a href="#">Веб-разработка</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-paper-plane"></i> Telegram: @pigrowant</p>
+                    <p><i class="fas fa-envelope"></i> Email: afterche@bk.ru</p>
+                    <p><i class="fas fa-globe"></i> Сайт: <a href="http://afterche.github.io/">afterche.github.io</a></p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2026 AfterChe. Все права защищены. 
+            </div>
+			
+			
+			
+			
+			<div class="footer-links">
+    <h4>Обо мне</h4>
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary-light);">
+            <img src="./photo.jpg" alt="AfterChe" 
+                 style="width: 100%; height: 100%; object-fit: cover;"
+                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI0MCIgY3k9IjQwIiByPSI0MCIgZmlsbD0iIzFlODhlNSIvPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5BQzwvdGV4dD48L3N2Zz4='">
+        </div>
+        <div>
+            <p style="font-weight: bold; color: white; margin: 0;">Владимир</p>
+            <p style="color: #b0bec5; font-size: 0.9rem; margin: 5px 0;">Разработчик парсеров</p>
+        </div>
+    </div>
+    <p style="color: #b0bec5; font-size: 0.9rem;">Специализируюсь на автоматизации бизнес-процессов и создании парсеров данных.</p>
+</div>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Анимация при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за карточками
+        document.querySelectorAll('.expertise-card, .project-card, .process-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+	
+	    <!-- Google Analytics (если будете использовать) -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXX-Y');
+    </script>
+    -->
+
+    <!-- Yandex.Metrika (для российского трафика) -->
+    <!--
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(XXXXXX, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+        });
+    </script>
+    -->
+	
+	
+	
+	
+</body>
+</html>
