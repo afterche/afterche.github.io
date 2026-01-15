@@ -560,11 +560,11 @@
         <div class="container nav-container">
             <!-- Логотип с фото -->
             <a href="#" class="logo">
-                <div class="logo-img">
+                <!-- <div class="logo-img">
                     <img src="./photo.jpg" 
                          alt="AfterChe - разработчик парсеров" 
                          onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyMi41IiBjeT0iMjIuNSIgcj0iMjIuNSIgZmlsbD0iIzFlODhlNSIvPjxwYXRoIGQ9Ik0xNSAyMGMwLTIuOCAyLjItNSA1LTVzNSAyLjIgNSA1LTIuMiA1LTUgNS01LTIuMi01LTV6IiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik0yNSAzMGwtNS01IDUtNXoiIGZpbGw9IndoaXRlIi8+PC9zdmc+'">
-                </div>
+                </div> -->
                 <span class="logo-text">AfterChe</span>
             </a>
             
@@ -647,7 +647,7 @@
                 <div class="tech-item"><i class="fas fa-spider"></i> Puppeteer</div>
                 <div class="tech-item"><i class="fab fa-python"></i> Python</div>
                 <div class="tech-item"><i class="fab fa-js"></i> JavaScript</div>
-				<div class="tech-item"><i class="fab fa-server"></i> 1C</div>
+				<div class="tech-item"><i class="fas fa-database"></i> 1C</div>
                 <div class="tech-item"><i class="fab fa-react"></i> React</div>
                 <div class="tech-item"><i class="fab fa-vuejs"></i> Vue.js</div>
                 <div class="tech-item"><i class="fab fa-wordpress"></i> WordPress</div>
@@ -675,7 +675,7 @@
                     <div class="project-content">
                         <p><strong>Задача:</strong> Ежедневно проверять балансы тысяч адресов Dogecoin на нескольких блокчейн-эксплорерах.</p>
                         <p><strong>Решение:</strong> Устойчивый парсер с ротацией источников и обработкой ошибок.</p>
-                        <div class="code-block">
+                     <!--    <div class="code-block">
 // Часть кода парсера<br/>
 const sites = [{<br/>
 &nbsp;&nbsp;name: "SoChain DOGE",<br/>
@@ -685,7 +685,7 @@ const sites = [{<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;// Извлечение баланса...<br/>
 &nbsp;&nbsp;}<br/>
 }];
-                        </div>
+                        </div> -->
                         <p><strong>Результат:</strong> Замена 20+ часов ручной работы в неделю на полностью автоматизированный процесс.</p>
                         <div class="project-tech">
                             <span>Node.js</span>
@@ -705,7 +705,7 @@ const sites = [{<br/>
                     <div class="project-content">
                         <p><strong>Задача:</strong> Автоматически заполнять пустые каталоги аудиофайлами с учетом ограничений по размеру и количеству.</p>
                         <p><strong>Решение:</strong> Умный скрипт распределения файлов с уникальным подбором для каждого каталога.</p>
-                        <div class="code-block">
+                        <!-- <div class="code-block">
 // Автоматическое распределение аудиофайлов<br/>
 function selectUniqueFilesFor71MB(audios) {<br/>
 &nbsp;&nbsp;const MIN_FILES = 25;<br/>
@@ -713,7 +713,7 @@ function selectUniqueFilesFor71MB(audios) {<br/>
 &nbsp;&nbsp;const shuffled = shuffleArray([...audios]);<br/>
 &nbsp;&nbsp;// Рандомный подбор 25-33 файлов...<br/>
 }
-                        </div>
+                        </div> -->
                         <p><strong>Результат:</strong> Полная автоматизация процесса наполнения сайта контентом, экономия 15+ часов в неделю.</p>
                         <div class="project-tech">
                             <span>Node.js</span>
@@ -733,12 +733,12 @@ function selectUniqueFilesFor71MB(audios) {<br/>
                     <div class="project-content">
                         <p><strong>Задача:</strong> Динамически обновлять теги и жанры для медиафайлов на основе доступной базы.</p>
                         <p><strong>Решение:</strong> Система случайного, но уникального подбора тегов из JSON-базы данных.</p>
-                        <div class="code-block">
+                       <!--  <div class="code-block">
 // Генерация случайных тегов и жанров<br/>
 const randomTags = getRandomItems(uniqueData.tags, 4, 9);<br/>
 const randomGenres = getRandomItems(uniqueData.genres, 6, 9);<br/>
 snFileData.tags = `[translate:${randomTags.join(', ')}]`;
-                        </div>
+                        </div> -->
                         <p><strong>Результат:</strong> Уникализация контента, улучшение SEO, полная автоматизация процесса тегирования.</p>
                         <div class="project-tech">
                             <span>JSON</span>
@@ -806,49 +806,15 @@ snFileData.tags = `[translate:${randomTags.join(', ')}]`;
     <!-- Футер -->
     <footer id="contact">
         <div class="container">
+		
+		
             <div class="footer-content">
                 <div>
-                    <a href="#" class="footer-logo">
-                        <i class="fas fa-robot"></i> AfterChe
-                    </a>
-                    <p>Создаю интеллектуальные решения для автоматизации бизнеса. Специализация: парсинг данных, веб-разработка, SEO, системная интеграция.</p>
-                    <div class="social-links">
-                        <a href="https://github.com/afterche" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://t.me/pigrowant" title="Telegram"><i class="fab fa-telegram"></i></a>
-                        <a href="mailto:afterche@bk.ru" title="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Навигация</h4>
-                    <a href="#expertise">Экспертиза</a>
-                    <a href="#projects">Проекты</a>
-                    <a href="#tech">Технологии</a>
-                    <a href="#process">Как работаю</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Услуги</h4>
-                    <a href="#">Парсинг данных</a>
-                    <a href="#">Автоматизация</a>
-                    <a href="#">SEO оптимизация</a>
-                    <a href="#">Веб-разработка</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Контакты</h4>
-                    <p><i class="fas fa-paper-plane"></i> Telegram: @pigrowant</p>
-                    <p><i class="fas fa-envelope"></i> Email: afterche@bk.ru</p>
-                    <p><i class="fas fa-globe"></i> Сайт: <a href="https://afterche.github.io/about/aboutme.html">afterche.github.io</a></p>
-                </div>
-            </div>
-            <div class="copyright">
-                © 2026 AfterChe. Все права защищены. 
-            </div>
-			
-			
-			
-			
-			<div class="footer-links">
+				
+				
+							<div class="footer-links">
     <!-- <h4>Обо мне</h4> -->
-    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+    <div style="display: flex; align-items: center; gap: 11px; margin-bottom: 11px;">
         <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary-light);">
             <img src="./photo.jpg" alt="AfterChe" 
                  style="width: 100%; height: 100%; object-fit: cover;"
@@ -861,6 +827,46 @@ snFileData.tags = `[translate:${randomTags.join(', ')}]`;
     </div>
 <!--     <p style="color: #b0bec5; font-size: 0.9rem;">Специализируюсь на автоматизации бизнес-процессов и создании парсеров данных.</p> -->
 </div>
+				
+
+                   <!--  <a href="#" class="footer-logo">
+                        <i class="fas fa-robot"></i> AfterChe
+                    </a> -->
+                    <p>Создаю интеллектуальные решения для автоматизации бизнеса. Специализация: парсинг данных, веб-разработка, SEO, системная интеграция, Базы Данных, 1С.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/afterche" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://t.me/pigrowant" title="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="mailto:afterche@bk.ru" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Навигация</h4>
+                    <a href="#expertise">Экспертиза</a>
+                    <a href="#projects">Проекты</a>
+                    <a href="#tech">Технологии</a>
+                    <a href="#process">Как работаю</a>
+					<a href="#">Контакты</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Услуги</h4>
+                    <a href="#">Парсинг данных</a>
+                    <a href="#">Автоматизация</a>
+                    <a href="#">SEO оптимизация</a>
+                    <a href="#">Веб-разработка</a>
+					<a href="#">Интеграция 1С</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-paper-plane"></i> Telegram: @pigrowant</p>
+                    <p><i class="fas fa-envelope"></i> Email: afterche@bk.ru</p>
+                    <p><i class="fas fa-globe"></i> Сайт: <a href="https://afterche.github.io/about/aboutme.html">afterche.github.io</a></p>
+                </div>
+            </div>
+			
+			
+            <div class="copyright">
+                © 2026 AfterChe. Все права защищены. 
+            </div>
         </div>
     </footer>
 
@@ -938,4 +944,5 @@ snFileData.tags = `[translate:${randomTags.join(', ')}]`;
 	
 </body>
 </html>
+
 
