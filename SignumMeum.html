@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signum Meum — Твой след в вечности</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+<style>
+:root {
+--gold: #ffcc33;
+--blue: #00d4ff;
+--dark: #0a0a0a;
+--stone: #1a1a1a;
+--green: #00ff88;
+}
+
+body {
+margin: 0;
+padding: 0;
+background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+color: white;
+font-family: 'Montserrat', sans-serif;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+.stars {
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background: url('https://www.transparenttextures.com/patterns/stardust.png');
+opacity: 0.3;
+z-index: 0;
+}
+
+.container {
+position: relative;
+z-index: 10;
+max-width: 900px;
+margin: 0 auto;
+padding: 40px 20px;
+text-align: center;
+}
+
+h1 {
+font-family: 'Playfair Display', serif;
+font-size: 2.5rem;
+margin-bottom: 10px;
+letter-spacing: 2px;
+background: linear-gradient(to bottom, #fff, #888);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.slogan {
+font-size: 3.7rem;
+color: var(--gold);
+text-transform: uppercase;
+letter-spacing: 4px;
+margin-bottom: 50px;
+font-weight: 300;
+}
+
+.motto {
+font-family: 'Playfair Display', serif;
+font-style: italic;
+font-size: 1.5rem;
+color: rgba(255, 255, 255, 0.5);
+margin-bottom: 40px;
+}
+
+/* Кнопки режимов теперь будут под полем ввода, убираем margin-bottom */
+.mode-selector {
+display: flex;
+justify-content: center;
+gap: 15px;
+margin-bottom: 0; 
+margin-top: 25px;  /* добавляем отступ сверху, чтобы отделить от поля */
+flex-wrap: wrap;
+}
+
+.mode-btn {
+padding: 12px 24px;
+border: 2px solid rgba(255,255,255,0.2);
+background: transparent;
+color: white;
+cursor: pointer;
+border-radius: 50px;
+transition: all 0.3s ease;
+font-weight: 500;
+font-size: 0.95rem;
+}
+
+.mode-btn.active {
+border-color: var(--blue);
+background: rgba(0,212,255,0.1);
+box-shadow: 0 0 20px rgba(0,212,255,0.3);
+}
+
+.input-group {
+position: relative;
+margin-bottom: 10px; /* уменьшаем нижний отступ, так как кнопки теперь снизу */
+opacity: 1;
+transition: opacity 0.3s ease;
+}
+
+.input-group.hidden {
+opacity: 0;
+height: 0;
+margin: 0;
+overflow: hidden;
+}
+
+input[type="text"], input[type="file"] {
+width: 100%;
+max-width: 500px;
+background: rgba(255,255,255,0.05);
+border: 2px solid rgba(255,255,255,0.1);
+border-radius: 10px;
+padding: 15px;
+font-size: 1.2rem;
+color: white;
+text-align: center;
+outline: none;
+transition: all 0.5s ease;
+backdrop-filter: blur(10px);
+}
+
+input[type="text"]:focus, input[type="file"]:focus {
+border-color: var(--blue);
+box-shadow: 0 0 20px rgba(0,212,255,0.3);
+}
+
+input::placeholder {
+color: rgba(255,255,255,0.4);
+font-style: italic;
+}
+
+.hash-result {
+margin-top: 30px;
+padding: 25px;
+background: rgba(0,0,0,0.5);
+border-radius: 15px;
+border: 1px solid rgba(0,212,255,0.3);
+word-break: break-all;
+font-family: 'Courier New', monospace;
+font-size: 0.95rem;
+color: var(--green);
+max-width: 650px;
+margin-left: auto;
+margin-right: auto;
+opacity: 0;
+transform: translateY(20px);
+transition: all 0.5s ease;
+}
+
+.hash-result.show {
+opacity: 1;
+transform: translateY(0);
+}
+
+.char-limit {
+font-size: 0.9rem;
+color: rgba(255,255,255,0.4);
+margin-top: 5px;
+display: block;
+}
+
+.btn-trace {
+background: transparent;
+border: 2px solid var(--blue);
+color: var(--blue);
+padding: 15px 40px;
+font-size: 1.1rem;
+text-transform: uppercase;
+letter-spacing: 2px;
+cursor: pointer;
+transition: all 0.4s ease;
+position: relative;
+overflow: hidden;
+border-radius: 50px;
+font-weight: bold;
+margin-top: 20px;
+}
+
+.btn-trace:hover:not(:disabled) {
+background: var(--blue);
+color: var(--dark);
+box-shadow: 0 0 30px var(--blue);
+}
+
+.btn-trace:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+}
+
+.copied {
+position: absolute;
+top: -30px;
+right: 0;
+background: var(--green);
+color: black;
+padding: 5px 10px;
+border-radius: 5px;
+font-size: 0.8rem;
+animation: fadeInOut 1.5s ease;
+display: none; /* скрыто по умолчанию */
+}
+
+@keyframes fadeInOut {
+0% { opacity: 0; transform: translateY(-10px); }
+20% { opacity: 1; transform: translateY(0); }
+80% { opacity: 1; transform: translateY(0); }
+100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.mode-info {
+background: rgba(255,255,255,0.05);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 8px;
+padding: 15px;
+margin-top: 20px;
+font-size: 0.9rem;
+color: rgba(255,255,255,0.7);
+max-width: 500px;
+margin-left: auto;
+margin-right: auto;
+}
+
+@media (max-width: 768px) {
+h1 { font-size: 2.5rem; }
+.mode-selector { flex-direction: column; align-items: center; gap: 10px; }
+.mode-btn { width: 220px; }
+}
+
+
+/* Стили для таблицы вечности */
+.table-wall {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: 'Montserrat', sans-serif;
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,212,255,0.2);
+}
+
+.table-wall th {
+  background: rgba(0,212,255,0.2);
+  color: var(--blue);
+  padding: 15px 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  border-bottom: 2px solid var(--blue);
+  text-align: left;
+}
+
+.table-wall td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  vertical-align: middle;
+}
+
+.table-wall tr:hover {
+  background: rgba(0,212,255,0.1);
+}
+
+.txid-short {
+  font-family: 'Courier New', monospace;
+  color: #00ff88;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.txid-short:hover {
+  text-decoration: underline;
+  color: var(--blue);
+}
+
+.message-cell {
+  font-family: 'Courier New', monospace;
+  color: var(--gold);
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spec-link {
+  color: #888;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.3s;
+}
+
+.spec-link:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.date-cell {
+  color: #aaa;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Для мобильных */
+@media (max-width: 768px) {
+  .table-wall {
+    font-size: 0.8rem;
+  }
+  
+  .message-cell {
+    max-width: 120px;
+  }
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<div class="container">
+	<div class="slogan">Signum Meum</div>
+<h1>Ваше послание вечности</h1>
+
+
+<p class="motto">Hoc est signum meum</p>
+
+<!-- Текстовое поле (всегда видимо для ввода текста, но меняет поведение в зависимости от режима) -->
+<div class="input-group" id="textGroup">
+<input type="text" id="traceInput" placeholder="" 
+       maxlength="80" 
+       oninput="handleTextInput()">
+<span class="char-limit" id="charCount">0 / 80 символов</span>
+<div class="mode-info" id="textInfo" style="display: none;">
+Результат будет готов для OP_RETURN в блокчейн Bitcoin/LTC/Doge
+</div>
+</div>
+
+
+<!-- Загрузка файла (изначально скрыта) -->
+<div class="input-group hidden" id="fileGroup">
+<input type="file" id="fileInput" accept="*/*" onchange="handleFile()">
+<span class="char-limit">Любой файл: изображения, PDF, ZIP, видео, документы...</span>
+<div class="mode-info" id="fileInfo" style="display: none;">
+SHA-256 хеш любого файла — доказательство существования на момент фиксации
+</div>
+</div>
+
+<!-- Кнопки выбора режима (теперь под текстовым полем) -->
+<div class="mode-selector">
+<button class="mode-btn active" data-mode="text-hex">📝 Текст → HEX</button>
+<button class="mode-btn" data-mode="text-sha">🔐 Текст → SHA256</button>
+<button class="mode-btn" data-mode="file">📁 Файл → SHA256</button>
+</div>
+
+
+
+<button class="btn-trace" id="generateBtn" onclick="generateHash()">Создать хеш для блокчейна</button>
+
+<!-- Результат -->
+<div class="hash-result" id="hashResult">
+<div style="position: relative;">
+<div id="hashValue"></div>
+<button onclick="copyHash()" style="position: absolute; top: 0; right: 0; background: none; border: none; color: var(--green); cursor: pointer; font-size: 1.2rem;">📋</button>
+<div class="copied" id="copiedMsg">Скопировано!</div>
+</div>
+</div>
+
+<button class="btn-trace" id="sendBtn" onclick="sendTrace()" disabled style="margin-top: 20px;">Отправить в блокчейн</button>
+
+<table class="table-wall">
+  <thead>
+    <tr>
+      <td>DATE</td>
+      <td>TXID</td>
+      <td>DOGE OP_RETURN MESSAGE</td>
+      <td>SPEC</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <!-- DATE -->
+      <td class="date-cell">2026-03-17<br><span style="color:#666; font-size:0.75rem;">14:37</span></td>
+      
+      <!-- TXID (сокращенный с ссылкой на opreturn.net) -->
+      <td>
+        <a href="https://opreturn.net/1e48ef31a39d4c80321d6271db4ad1903b944ed42e54eccdac4d157f190efd8f" 
+           target="_blank" 
+           class="txid-short"
+           title="1e48ef31a39d4c80321d6271db4ad1903b944ed42e54eccdac4d157f190efd8f">
+          1e48e...еfd8f
+        </a>
+      </td>
+      
+      <!-- DOGE OP_RETURN MESSAGE -->
+      <td class="message-cell" style="font-size: 1.3rem; font-weight: bold; color: #ffcc33;">NVN PigroWant AfterChe</td>
+      
+      <!-- SPEC (ссылка на Blockchair) -->
+      <td>
+        <a href="https://api.blockchair.com/dogecoin/dashboards/transaction/1e48ef31a39d4c80321d6271db4ad1903b944ed42e54eccdac4d157f190efd8f" 
+           target="_blank" 
+           class="spec-link">
+          ⚙️ API
+        </a>
+      </td>
+    </tr>
+    
+    <!-- Сюда можно добавить еще строк (новые записи) -->
+    
+  </tbody>
+</table>
+
+
+
+
+<!-- Эта таблица в Диве поэтому другой формат -->
+
+<div class="wall-entry" style="border:1px solid #00d4ff; padding:15px; margin:10px; border-radius:8px; background:rgba(0,0,0,0.3);">
+  <table class="table-wall">
+  <thead>
+    <tr>
+      <td>DATE</td>
+      <td>TXID</td>
+      <td>DOGE OP_RETURN MESSAGE</td>
+      <td>SPEC</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <!-- DATE -->
+      <td class="date-cell">2026-03-17<br><span style="color:#666; font-size:0.75rem;">14:37</span></td>
+      
+      <!-- TXID (сокращенный с ссылкой на opreturn.net) -->
+      <td>
+        <a href="https://opreturn.net/1e48ef31a39d4c80321d6271db4ad1903b944ed42e54eccdac4d157f190efd8f" 
+           target="_blank" 
+           class="txid-short"
+           title="1e48ef31a39d4c80321d6271db4ad1903b944ed42e54eccdac4d157f190efd8f">
+          1e48e...еfd8f
+        </a>
+      </td>
+      
+      <!-- DOGE OP_RETURN MESSAGE -->
+       <td class="message-cell" style="font-size: 1.3rem; font-weight: bold; color: #ffcc33;">NVN PigroWant AfterChe</td>
+      
+      <!-- SPEC (ссылка на Blockchair) -->
+      <td>
+        <a href="https://api.blockchair.com/dogecoin/dashboards/transaction/1e48ef31a39d4c80321d6271db4ad1903b944ed42e54eccdac4d157f190efd8f" 
+           target="_blank" 
+           class="spec-link">
+          ⚙️ API
+        </a>
+      </td>
+    </tr>
+    
+	
+	<tr>
+  <!-- DATE -->
+  <td class="date-cell">2026-03-14<br><span style="color:#666; font-size:0.75rem;">04:05</span></td>
+  
+  <!-- TXID (сокращенный с ссылкой на opreturn.net) -->
+  <td>
+    <a href="https://opreturn.net/024c383522904ec97038210f520bff0e4717db33aafb9eb0051569261fa6c63f" 
+       target="_blank" 
+       class="txid-short"
+       title="024c383522904ec97038210f520bff0e4717db33aafb9eb0051569261fa6c63f">
+      024c3...c63f
+    </a>
+  </td>
+  
+  <!-- DOGE OP_RETURN MESSAGE - расшифровано -->
+  <td class="message-cell" style="font-size: 1.3rem; font-weight: bold; color: #ffcc33;">
+    "bye spy - we got our own......"
+  </td>
+  
+  <!-- SPEC (ссылка на Blockchair) -->
+  <td>
+    <a href="https://api.blockchair.com/dogecoin/dashboards/transaction/024c383522904ec97038210f520bff0e4717db33aafb9eb0051569261fa6c63f" 
+       target="_blank" 
+       class="spec-link">
+      ⚙️ API
+    </a>
+  </td>
+</tr>
+	
+
+<tr>
+  <!-- DATE -->
+  <td class="date-cell">2026-03-07<br><span style="color:#666; font-size:0.75rem;">15:25</span></td>
+  
+  <!-- TXID (сокращенный с ссылкой на opreturn.net) -->
+  <td>
+    <a href="https://opreturn.net/10ef3e96e0ab563816ccb06e39122896fa3d13ed1e6707c213b97e3038ddd9cd" 
+       target="_blank" 
+       class="txid-short"
+       title="10ef3e96e0ab563816ccb06e39122896fa3d13ed1e6707c213b97e3038ddd9cd">
+      10ef3...d9cd
+    </a>
+  </td>
+  
+  <!-- DOGE OP_RETURN MESSAGE - расшифровано -->
+  <td class="message-cell" style="font-size: 1.3rem; font-weight: bold; color: #ffcc33;">
+    "0x6768DBc163dE4CF69daCbf41d976d2d5bb1b08CF"
+  </td>
+  
+  <!-- SPEC (ссылка на Blockchair) -->
+  <td>
+    <a href="https://api.blockchair.com/dogecoin/dashboards/transaction/10ef3e96e0ab563816ccb06e39122896fa3d13ed1e6707c213b97e3038ddd9cd" 
+       target="_blank" 
+       class="spec-link">
+      ⚙️ API
+    </a>
+  </td>
+</tr>
+
+
+<tr>
+  <!-- DATE -->
+  <td class="date-cell">2026-02-23<br><span style="color:#666; font-size:0.75rem;">04:03</span></td>
+  
+  <!-- TXID (сокращенный с ссылкой на opreturn.net) -->
+  <td>
+    <a href="https://opreturn.net/9863cc268f636c659010a326463e646246413b29fcdf3e885e0c2c769f5c19e9" 
+       target="_blank" 
+       class="txid-short"
+       title="9863cc268f636c659010a326463e646246413b29fcdf3e885e0c2c769f5c19e9">
+      9863c...19e9
+    </a>
+  </td>
+  
+  <!-- DOGE OP_RETURN MESSAGE - расшифровано -->
+  <td class="message-cell" style="font-size: 1.3rem; font-weight: bold; color: #ffcc33;">
+    "f13f0e5fcf125f5776d7ae1ce706719605427a0db96bd5908091413c84c9e3b"
+  </td>
+  
+  <!-- SPEC (ссылка на Blockchair) -->
+  <td>
+    <a href="https://api.blockchair.com/dogecoin/dashboards/transaction/9863cc268f636c659010a326463e646246413b29fcdf3e885e0c2c769f5c19e9" 
+       target="_blank" 
+       class="spec-link">
+      ⚙️ API
+    </a>
+  </td>
+</tr>
+
+<tr>
+  <!-- DATE -->
+  <td class="date-cell">2026-03-02<br><span style="color:#666; font-size:0.75rem;">16:36</span></td>
+  
+  <!-- TXID (сокращенный с ссылкой на opreturn.net) -->
+  <td>
+    <a href="https://opreturn.net/aab2da6c71eac5fe260c34ea06f5699ebc859742266712c65e3373c2953b5774" 
+       target="_blank" 
+       class="txid-short"
+       title="aab2da6c71eac5fe260c34ea06f5699ebc859742266712c65e3373c2953b5774">
+      aab2d...5774
+    </a>
+  </td>
+  
+  <!-- DOGE OP_RETURN MESSAGE - расшифровано -->
+  <td class="message-cell" style="font-size: 1.3rem; font-weight: bold; color: #ffcc33;">
+    "Thats Official"
+  </td>
+  
+  <!-- SPEC (ссылка на Blockchair) -->
+  <td>
+    <a href="https://api.blockchair.com/dogecoin/dashboards/transaction/aab2da6c71eac5fe260c34ea06f5699ebc859742266712c65e3373c2953b5774" 
+       target="_blank" 
+       class="spec-link">
+      ⚙️ API
+    </a>
+  </td>
+</tr>
+
+
+	
+<tr>
+  <!-- DATE -->
+  <td class="date-cell">2026-03-14<br><span style="color:#666; font-size:0.75rem;">04:05</span></td>
+
+  <!-- TXID -->
+  <td>
+    <a href="https://opreturn.net/024c383522904ec97038210f520bff0e4717db33aafb9eb0051569261fa6c63f" target="_blank" class="txid-short" title="024c383522904ec97038210f520bff0e4717db33aafb9eb0051569261fa6c63f">
+      024c3...c63f
+    </a>
+  </td>
+
+  <!-- MESSAGE -->
+  <td class="message-cell" style="font-size: 1.3rem; font-weight: bold; color: #ffcc33;">
+    "bye spy - we got our own......"
+  </td>
+
+  <!-- SPEC -->
+  <td>
+    <a href="https://api.blockchair.com/dogecoin/dashboards/transaction/024c383522904ec97038210f520bff0e4717db33aafb9eb0051569261fa6c63f" target="_blank" class="spec-link">
+      ⚙️ API
+    </a>
+  </td>
+</tr>	
+	
+	
+<tr>
+  <!-- DATE -->
+  <td class="date-cell">2026-01-31<br><span style="color:#666; font-size:0.75rem;">10:06</span></td>
+
+  <!-- TXID -->
+  <td>
+    <a href="https://opreturn.net/b686bdc47fb2c3cbc889c5bb247e2e36cfb5ee3fa49f8eed82bf106cad38138b" target="_blank" class="txid-short" title="b686bdc47fb2c3cbc889c5bb247e2e36cfb5ee3fa49f8eed82bf106cad38138b">
+      b686b...138b
+    </a>
+  </td>
+
+  <!-- MESSAGE -->
+  <td class="message-cell" style="font-size: 1.3rem; font-weight: bold; color: #ffcc33;">
+    "nostr   simply doesnt go away      ...."
+  </td>
+
+  <!-- SPEC -->
+  <td>
+    <a href="https://api.blockchair.com/dogecoin/dashboards/transaction/b686bdc47fb2c3cbc889c5bb247e2e36cfb5ee3fa49f8eed82bf106cad38138b" target="_blank" class="spec-link">
+      ⚙️ API
+    </a>
+  </td>
+</tr>
+	
+	
+	
+    <!-- Сюда можно добавить еще строк (новые записи) -->
+    
+  </tbody>
+</table>
+</div>
+
+
+
+
+</div>
+
+
+
+<div class="wall-entry" style="border:1px solid #00d4ff; padding:15px; margin:10px; border-radius:8px; background:rgba(0,0,0,0.3);">
+  <table class="table-wall">
+  <thead>
+    <tr>
+      <th>DATE</th>
+      <th>TXID</th>
+      <th>DOGE OP_RETURN MESSAGE</th>
+      <th>SPEC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <!-- DATE -->
+      <td class="date-cell">2026-03-17<br><span style="color:#666; font-size:0.75rem;">14:37</span></td>
+      
+      <!-- TXID (сокращенный с ссылкой на opreturn.net) -->
+      <td>
+        <a href="https://opreturn.net/1e48ef31a39d4c80321d6271db4ad1903b944ed42e54eccdac4d157f190efd8f" 
+           target="_blank" 
+           class="txid-short"
+           title="1e48ef31a39d4c80321d6271db4ad1903b944ed42e54eccdac4d157f190efd8f">
+          1e48e...fd8f
+        </a>
+      </td>
+      
+      <!-- DOGE OP_RETURN MESSAGE -->
+      <td class="message-cell">"NVN PigroWant AfterChe"</td>
+      
+      <!-- SPEC (ссылка на Blockchair) -->
+      <td>
+        <a href="https://api.blockchair.com/dogecoin/dashboards/transaction/1e48ef31a39d4c80321d6271db4ad1903b944ed42e54eccdac4d157f190efd8f" 
+           target="_blank" 
+           class="spec-link">
+          ⚙️ API
+        </a>
+      </td>
+    </tr>
+    
+    <!-- Сюда можно добавить еще строк (новые записи) -->
+    
+  </tbody>
+</table>
+</div>
+
+
+
+
+<script>
+let currentMode = 'text-hex';
+let currentHash = '';
+
+// Получаем элементы
+const textInput = document.getElementById('traceInput');
+const charCount = document.getElementById('charCount');
+const textGroup = document.getElementById('textGroup');
+const fileGroup = document.getElementById('fileGroup');
+const generateBtn = document.getElementById('generateBtn');
+const textInfo = document.getElementById('textInfo');
+const fileInfo = document.getElementById('fileInfo');
+const hashResultDiv = document.getElementById('hashResult');
+const hashValueDiv = document.getElementById('hashValue');
+const sendBtn = document.getElementById('sendBtn');
+const copiedMsg = document.getElementById('copiedMsg');
+
+// Функция обработки ввода текста для динамического изменения maxlength
+window.handleTextInput = function() {
+    if (currentMode === 'text-hex') {
+        // Для HEX режима оставляем лимит 80
+        textInput.maxLength = 80;
+    } else {
+        // Для SHA256 режима убираем лимит (ставим большое число)
+        textInput.maxLength = 999999;
+    }
+    // Обновляем счетчик символов
+    charCount.innerText = `${textInput.value.length} / ${textInput.maxLength === 80 ? '80' : '∞'} символов`;
+};
+
+// Переключение режимов
+document.querySelectorAll('.mode-btn').forEach(btn => {
+btn.addEventListener('click', () => {
+document.querySelector('.mode-btn.active').classList.remove('active');
+btn.classList.add('active');
+currentMode = btn.dataset.mode;
+
+// Показать/скрыть поля для файла
+if (currentMode === 'file') {
+    textGroup.classList.add('hidden');
+    fileGroup.classList.remove('hidden');
+    generateBtn.textContent = 'Хешировать файл';
+    textInfo.style.display = 'none';
+    fileInfo.style.display = 'block';
+} else {
+    textGroup.classList.remove('hidden');
+    fileGroup.classList.add('hidden');
+    generateBtn.textContent = 'Создать хеш для блокчейна';
+    textInfo.style.display = 'block';
+    fileInfo.style.display = 'none';
+    
+    // Обновляем maxlength в зависимости от режима
+    handleTextInput();
+}
+
+resetResult();
+});
+});
+
+// Счетчик символов и обработка лимита
+textInput.addEventListener('input', handleTextInput);
+
+// Текст → HEX (байты UTF-8)
+function textToHex(text) {
+return Array.from(new TextEncoder().encode(text))
+.map(b => b.toString(16).padStart(2, '0'))
+.join('');
+}
+
+// Генерация результата
+function generateHash() {
+if (currentMode === 'file') {
+    // Если режим файла, но файл не выбран
+    const file = document.getElementById('fileInput').files[0];
+    if (!file) {
+        alert('Выберите файл!');
+        return;
+    }
+    // Файл обрабатывается в handleFile, поэтому здесь ничего не делаем
+    return;
+}
+
+const text = textInput.value.trim();
+
+if (!text) {
+alert('Введите текст!');
+return;
+}
+
+let hashValue = '';
+
+if (currentMode === 'text-hex') {
+currentHash = textToHex(text);
+const bytes = currentHash.length / 2;
+hashValue = `<strong>HEX (${bytes} байт):</strong><br>${currentHash}`;
+} else if (currentMode === 'text-sha') {
+currentHash = CryptoJS.SHA256(text).toString();
+hashValue = `<strong>SHA-256:</strong><br>${currentHash}`;
+}
+
+hashValueDiv.innerHTML = hashValue;
+hashResultDiv.classList.add('show');
+sendBtn.disabled = false;
+}
+
+// Обработка файла
+async function handleFile() {
+const file = document.getElementById('fileInput').files[0];
+if (file) {
+generateBtn.disabled = true;
+generateBtn.textContent = 'Хеширую...';
+
+try {
+const arrayBuffer = await file.arrayBuffer();
+const hashArray = await crypto.subtle.digest('SHA-256', arrayBuffer);
+currentHash = Array.from(new Uint8Array(hashArray))
+.map(b => b.toString(16).padStart(2, '0'))
+.join('');
+
+hashValueDiv.innerHTML = `
+<strong>SHA-256 (${file.name}):</strong><br>${currentHash}
+`;
+hashResultDiv.classList.add('show');
+sendBtn.disabled = false;
+} catch (e) {
+alert('Ошибка хеширования: ' + e.message);
+} finally {
+generateBtn.disabled = false;
+generateBtn.textContent = 'Хешировать файл';
+}
+}
+}
+
+// Копирование хеша
+function copyHash() {
+navigator.clipboard.writeText(currentHash).then(() => {
+copiedMsg.style.display = 'block';
+setTimeout(() => copiedMsg.style.display = 'none', 1500);
+});
+}
+
+// Отправка (заглушка)
+function sendTrace() {
+alert(`✅ Хеш готов для OP_RETURN!\n\n${currentHash}\n\nСкопируйте и вставьте в blockchain.com или opreturn.net`);
+}
+
+// Сброс результата
+function resetResult() {
+hashResultDiv.classList.remove('show');
+sendBtn.disabled = true;
+document.getElementById('fileInput').value = '';
+currentHash = '';
+}
+
+// Инициализация при загрузке
+handleTextInput(); // установить правильный maxlength при старте
+textInfo.style.display = 'block';
+fileInfo.style.display = 'none';
+</script>
+</body>
+</html>
